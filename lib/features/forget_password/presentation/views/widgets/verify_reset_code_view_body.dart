@@ -62,13 +62,13 @@ class _VerifyResetCodeViewBodyState extends State<VerifyResetCodeViewBody>
                       Text(
                         AppStrings.invalidCode,
                         style: AppTextStyles.kBlack13Regular().copyWith(
-                          color: AppColors.kRedErrorColor,
+                          color: AppColors.redErrorColor,
                         ),
                       ),
                       4.verticalSpace,
                       const Icon(
                         Icons.info_outlined,
-                        color: AppColors.kRedErrorColor,
+                        color: AppColors.redErrorColor,
                       ),
                     ],
                   ),

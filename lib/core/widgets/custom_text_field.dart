@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../styles/app_colors.dart';
 
 class CustomTextfield extends StatelessWidget {
@@ -35,7 +36,7 @@ class CustomTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: AppColors.kBlackColor,
+      cursorColor: AppColors.blackColor,
       controller: controller,
       obscureText: isPassword ?? false,
       validator: validator,

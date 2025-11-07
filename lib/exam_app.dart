@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'config/router/app_router/go_router.dart';
 import 'core/themes/app_theme.dart';
 
@@ -18,8 +17,8 @@ class ExamApp extends StatelessWidget {
       builder: (_, _) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.initialize(initialRoute: initialRoute),
-        theme: AppThemes.light(),
-        darkTheme: AppThemes.dark(),
+        theme: AppThemes.light,
+        darkTheme: AppThemes.dark,
         themeMode: ThemeMode.light,
         builder: EasyLoading.init(),
       ),

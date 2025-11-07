@@ -24,3 +24,34 @@ class BaseState<T> extends Equatable {
   @override
   List<Object?> get props => [isLoading, errorMessage, data];
 }
+
+// enum Status { success, loading, initial, error }
+
+// class BaseState<T> extends Equatable {
+//   // loading
+//   const BaseState.loading()
+//     : status = Status.loading,
+//       data = null,
+//       exception = null;
+
+//   // success
+//   const BaseState.success({this.data})
+//     : status = Status.success,
+//       exception = null;
+
+//   // error
+//   const BaseState.error({this.data, this.exception}) : status = Status.error;
+
+//   // initial
+//   const BaseState.initial()
+//     : status = Status.initial,
+//       data = null,
+//       exception = null;
+
+//   final Status status;
+//   final T? data;
+//   final Exception? exception;
+
+//   @override
+//   List<Object?> get props => [status, data, exception];
+// }

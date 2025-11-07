@@ -1,7 +1,8 @@
-import '../../../../../core/styles/app_colors.dart';
-import '../../../../../core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/styles/app_colors.dart';
+import '../../../../../core/styles/app_text_styles.dart';
 
 class CustomBottomNavBarItem extends StatelessWidget {
   const CustomBottomNavBarItem({
@@ -24,7 +25,7 @@ class CustomBottomNavBarItem extends StatelessWidget {
 
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.sp),
-            color: isSelected ? AppColors.kBlueColor : Colors.transparent,
+            color: isSelected ? AppColors.blueColor : Colors.transparent,
           ),
           child: icon,
         ),

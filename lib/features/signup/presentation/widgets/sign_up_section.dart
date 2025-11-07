@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
+import '../../../../core/constants/api_endpoints/api_keys.dart';
 import '../../../../core/constants/app_strings/app_strings.dart';
 import '../../../../core/widgets/custom_loading_widget.dart';
-import '../../../../core/widgets/custom_snack_bar.dart';
 import '../../domain/entities/user_entity.dart';
 import '../view_models/sign_up_cubit.dart';
 import '../view_models/sign_up_events.dart';
@@ -41,10 +40,7 @@ class _SignUpSectionState extends State<SignUpSection> {
         listener: (context, state) {
           if (state.signupState.hasData) {
             context.pop();
-            customSnackBar(context, message: AppStrings.signUpSuccess);
-          } else if (state.signupState.hasError) {
-            customSnackBar(context, message: state.signupState.errorMessage!);
-          }
+          } else if (state.signupState.hasError) {}
         },
         builder: (context, state) {
           return Column(
@@ -96,13 +92,13 @@ class _SignUpSectionState extends State<SignUpSection> {
       context.read<SignUpCubit>().doIntent(
         SignUp(
           user: UserEntity.fromMap({
-            'username': _usernameController.text,
-            'firstName': _firstNameController.text,
-            'lastName': _lastNameController.text,
-            'email': _emailController.text,
-            'password': _passwordController.text,
-            'rePassword': _passwordController.text,
-            'phone': _phoneNumberController.text,
+            ApiKeys.username: _usernameController.text,
+            ApiKeys.firstName: _firstNameController.text,
+            ApiKeys.lastName: _lastNameController.text,
+            ApiKeys.email: _emailController.text,
+            ApiKeys.password: _passwordController.text,
+            ApiKeys.rePassword: _passwordController.text,
+            ApiKeys.phone: _phoneNumberController.text,
           }),
         ),
       );

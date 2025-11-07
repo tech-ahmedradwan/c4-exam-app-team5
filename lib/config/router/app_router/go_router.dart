@@ -12,7 +12,6 @@ import '../../../features/signup/presentation/views/sign_up_view.dart';
 
 class AppRouter {
   static GoRouter initialize({String? initialRoute}) {
-    print(initialRoute);
     return GoRouter(
       initialLocation: initialRoute ?? AppRoutes.signInRoute,
       errorBuilder: (context, state) =>

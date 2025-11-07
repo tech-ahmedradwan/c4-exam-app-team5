@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../config/di/di.dart';
 import '../../../../core/constants/app_routes/app_routes.dart';
 import '../../../../core/constants/app_strings/app_strings.dart';
-import '../../../../core/styles/app_colors.dart';
-import '../../../../core/styles/app_text_styles.dart';
+import '../../../../core/utils/app_sizes.dart';
+import '../../../../core/widgets/custom_fixed_clickable_text_widget.dart';
 import '../view_models/sign_up_cubit.dart';
 import '../widgets/sign_up_section.dart';
 
@@ -24,7 +23,7 @@ class _SignUpViewState extends State<SignUpView> {
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.signUpTitle)),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        padding: EdgeInsets.symmetric(horizontal: AppSizes.w16),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
@@ -35,33 +34,15 @@ class _SignUpViewState extends State<SignUpView> {
                 child: const SignUpSection(),
               ),
               6.verticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    AppStrings.alreadyHaveAccount,
-                    style: AppTextStyles.kBlack16Regular(),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: const Size(0, 0),
-                    ),
-                    onPressed: () {
-                      context.go(AppRoutes.signInRoute);
-                    },
-                    child: Text(
-                      AppStrings.loginButton,
-                      style: AppTextStyles.kBlack12UnderLineRegular().copyWith(
-                        fontSize: 16.sp,
-                        color: AppColors.kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
+              Center(
+                child: CustomFixedTextAndClickableText(
+                  fixedText: AppStrings.dontHaveAccount,
+                  clickableText: AppStrings.loginButton,
+                  onTap: () {
+                    context.pushNamed(AppRoutes.signInRoute);
+                  },
+                ),
               ),
-              // const PasswordRequirements(),
             ],
           ),
         ),

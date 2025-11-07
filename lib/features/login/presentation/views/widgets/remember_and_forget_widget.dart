@@ -26,17 +26,16 @@ class _CustomRememberAndForgetState extends State<CustomRememberAndForget> {
       isThreeLine: false,
       contentPadding: EdgeInsets.zero,
       leading: Checkbox(
-        activeColor: AppColors.kPrimaryColor,
+        activeColor: AppColors.primaryColor,
         value: isSelected,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(2.r),
         ),
-        side: BorderSide(color: AppColors.kGreyColor, width: 2.w),
+        side: BorderSide(color: AppColors.greyColor, width: 2.w),
         onChanged: (value) async {
           setState(() {
             isSelected = !isSelected;
           });
-          print(isSelected);
           await getIt<AppStorage>().saveBool(
             AppCacheKeys.rememberMeKey,
             isSelected,
