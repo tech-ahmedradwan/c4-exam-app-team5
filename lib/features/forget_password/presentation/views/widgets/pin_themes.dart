@@ -10,7 +10,7 @@ mixin PinThemes {
     height: 56,
     textStyle: AppTextStyles.kBlack18Mediam(),
     decoration: BoxDecoration(
-      color: AppColors.kLightBlueColor,
+      color: AppColors.lightBlueColor,
       borderRadius: BorderRadius.circular(10),
     ),
   );
@@ -20,7 +20,7 @@ mixin PinThemes {
     textStyle: AppTextStyles.kBlack18Mediam(),
     decoration: BoxDecoration(
       color: Colors.transparent,
-      border: Border.all(color: AppColors.kRedErrorColor),
+      border: Border.all(color: AppColors.redErrorColor),
       borderRadius: BorderRadius.circular(10),
     ),
   );

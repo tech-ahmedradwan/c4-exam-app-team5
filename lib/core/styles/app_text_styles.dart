@@ -1,71 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../utils/app_sizes.dart';
 import 'app_colors.dart';
 
 class AppTextStyles {
   AppTextStyles._();
   static TextStyle kBlack20Mediam() => GoogleFonts.inter(
-    fontSize: 20.sp,
+    fontSize: AppSizes.fs20,
     fontWeight: FontWeight.w500,
-    color: AppColors.kBlackColor,
+    color: AppColors.blackColor,
   );
   static TextStyle kBlack18Mediam() => GoogleFonts.inter(
-    fontSize: 18.sp,
+    fontSize: AppSizes.fs18,
     fontWeight: FontWeight.w500,
-    color: AppColors.kBlackColor,
+    color: AppColors.blackColor,
   );
 
   static TextStyle kBlack18Regular() => GoogleFonts.inter(
-    fontSize: 18.sp,
+    fontSize: AppSizes.fs18,
     fontWeight: FontWeight.w400,
-    color: AppColors.kBlackColor,
+    color: AppColors.blackColor,
   );
 
   static TextStyle k16Medium() =>
-      GoogleFonts.roboto(fontSize: 16.sp, fontWeight: FontWeight.w500);
+      GoogleFonts.roboto(fontSize: AppSizes.fs16, fontWeight: FontWeight.w500);
 
   static TextStyle kGrey14Regular() => GoogleFonts.inter(
-    fontSize: 14.sp,
+    fontSize: AppSizes.fs14,
     fontWeight: FontWeight.w400,
-    color: AppColors.kGreyColor,
+    color: AppColors.greyColor,
   );
   static TextStyle kBlack16Regular() => GoogleFonts.inter(
-    fontSize: 16.sp,
+    fontSize: AppSizes.fs16,
     fontWeight: FontWeight.w400,
-    color: AppColors.kBlackColor,
+    color: AppColors.blackColor,
   );
   static TextStyle kBlack12UnderLineRegular() => GoogleFonts.inter(
-    fontSize: 12.sp,
+    fontSize: AppSizes.fs12,
     fontWeight: FontWeight.w400,
-    color: AppColors.kBlackColor,
+    color: AppColors.blackColor,
+    decoration: TextDecoration.underline,
+  );
+  static TextStyle kBlue16UnderLineRegular() => GoogleFonts.inter(
+    fontSize: AppSizes.fs16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primaryColor,
     decoration: TextDecoration.underline,
   );
   static TextStyle kPlaceHolder14Regular() => GoogleFonts.roboto(
-    fontSize: 14.sp,
+    fontSize: AppSizes.fs14,
     fontWeight: FontWeight.normal,
-    color: AppColors.kPlaceHolderColor,
+    color: AppColors.placeHolderColor,
   );
   static TextStyle kBlue12SemiBold() => GoogleFonts.roboto(
-    fontSize: 12.sp,
+    fontSize: AppSizes.fs12,
     fontWeight: FontWeight.w600,
-    color: AppColors.kPrimaryColor,
+    color: AppColors.primaryColor,
   );
 
   static TextStyle kBlack13Regular() => GoogleFonts.inter(
-    fontSize: 13.sp,
+    fontSize: AppSizes.fs13,
     fontWeight: FontWeight.w400,
-    color: AppColors.kBlackColor,
+    color: AppColors.blackColor,
   );
 
   static TextStyle kGrey12Regular() => GoogleFonts.roboto(
-    fontSize: 12.sp,
+    fontSize: AppSizes.fs12,
     fontWeight: FontWeight.normal,
-    color: AppColors.kGreyColor,
+    color: AppColors.greyColor,
   );
   static TextStyle kWhite16Medium() => GoogleFonts.roboto(
-    fontSize: 16.sp,
+    fontSize: AppSizes.fs16,
     fontWeight: FontWeight.w500,
-    color: AppColors.kWhiteColor,
+    color: AppColors.whiteColor,
   );
 }

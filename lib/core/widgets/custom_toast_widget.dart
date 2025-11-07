@@ -1,6 +1,5 @@
 import 'package:cherry_toast/cherry_toast.dart';
 import 'package:flutter/material.dart';
-
 import '../styles/app_text_styles.dart';
 
 mixin ShowToasts {

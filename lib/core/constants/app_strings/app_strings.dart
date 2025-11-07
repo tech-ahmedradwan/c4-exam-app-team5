@@ -44,6 +44,7 @@ abstract class AppStrings {
   static const String alreadyHaveAccount = 'Already have an account? ';
   static const String signUpButton = 'Sign up';
   static const String signUpSuccess = 'User created successfully.';
+  static const String signUpError = 'Sign up failed. Please try again.';
 
   //------------Password Requirements-----------------
   static const String passwordRequirementsTitle = 'Password must contain:';
