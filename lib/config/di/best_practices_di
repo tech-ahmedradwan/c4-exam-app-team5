@@ -1,0 +1,8 @@
+| What               | Annotation                       | Reason                 |
+| ------------------ | -------------------------------- | ---------------------- |
+| Dio                | `@module` + `@lazySingleton`     | Central config & reuse |
+| Retrofit Service   | `@lazySingleton` + factoryMethod | Inject Dio cleanly     |
+| Remote Data Source | `@LazySingleton(as: ...)`        | One per feature        |
+| Repository         | `@LazySingleton(as: ...)`        | Shared instance        |
+| UseCases / Bloc    | `@injectable`                    | New instance if needed |
+----------------------------------------------------------------------------------
