@@ -36,7 +36,6 @@ class _CustomRememberAndForgetState extends State<CustomRememberAndForget> {
           setState(() {
             isSelected = !isSelected;
           });
-          print(isSelected);
           await getIt<AppStorage>().saveBool(
             AppCacheKeys.rememberMeKey,
             isSelected,

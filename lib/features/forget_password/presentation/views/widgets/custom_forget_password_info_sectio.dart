@@ -5,9 +5,9 @@ import '../../../../../core/styles/app_text_styles.dart';
 
 class CustomForgetPasswordInfoSection extends StatelessWidget {
   const CustomForgetPasswordInfoSection({
-    super.key,
     required this.title,
     required this.subTitle,
+    super.key,
   });
   final String title;
   final String subTitle;
