@@ -5,7 +5,7 @@ import '../styles/app_colors.dart';
 import '../styles/app_text_styles.dart';
 
 class AppThemes {
-  static light() => ThemeData(
+  static ThemeData light = ThemeData(
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.kBackgroundColor,
@@ -60,5 +60,5 @@ class AppThemes {
     ),
   );
 
-  static dark() => ThemeData(brightness: Brightness.light);
+  static ThemeData dark = ThemeData(brightness: Brightness.dark);
 }
