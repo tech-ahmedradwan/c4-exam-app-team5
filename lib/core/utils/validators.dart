@@ -24,7 +24,7 @@ mixin AppValidators {
     if (value == null || value.trim().isEmpty) {
       return AppStrings.fieldRequired.replaceFirst(
         '{field}',
-        AppStrings.firstNameLabel
+        AppStrings.firstNameLabel,
       );
     }
     if (value.trim().length < 3) {
@@ -43,7 +43,7 @@ mixin AppValidators {
     if (value == null || value.trim().isEmpty) {
       return AppStrings.fieldRequired.replaceFirst(
         '{field}',
-        AppStrings.lastNameLabel
+        AppStrings.lastNameLabel,
       );
     }
     if (value.trim().length < 3) {

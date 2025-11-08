@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../styles/app_colors.dart';
 import '../styles/app_text_styles.dart';
 import '../utils/app_sizes.dart';
@@ -29,7 +30,7 @@ class AppThemes {
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.borderColor,
-          width: AppSizes.r12,
+          width: AppSizes.w1_5,
         ),
       ),
       focusedBorder: OutlineInputBorder(

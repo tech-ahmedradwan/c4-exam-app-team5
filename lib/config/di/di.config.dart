@@ -17,6 +17,20 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/services/local/app_storage/app_storage.dart' as _i735;
 import '../../core/services/local/app_storage/app_storage_impl.dart' as _i696;
+import '../../features/explore/api/api_client/explore_api_client.dart'
+    as _i1020;
+import '../../features/explore/api/data_source/remote/explore_subjects_remote_data_source_impl.dart'
+    as _i609;
+import '../../features/explore/data/data_sources/remote/explore_subjects_remote_data_source_contract.dart'
+    as _i977;
+import '../../features/explore/data/repos/explore_subjects_repos_impl.dart'
+    as _i358;
+import '../../features/explore/domain/repos/expolre_subjects_repos_contract.dart'
+    as _i186;
+import '../../features/explore/domain/use_cases/fetch_explore_subjects_use_case.dart'
+    as _i462;
+import '../../features/explore/presentation/view_models/explore_subjects/explore_subjects_cubit.dart'
+    as _i1051;
 import '../../features/forget_password/api/api_client/forget_password_api_client.dart'
     as _i892;
 import '../../features/forget_password/api/data_sources/remote/forget_password_remote_data_source_impl.dart'
@@ -86,6 +100,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => storageModule.secureStorage,
     );
+    gh.lazySingleton<_i1020.ExploreApiClient>(
+      () => _i1020.ExploreApiClient(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i892.ForgetPasswordApiClient>(
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
     );
@@ -116,6 +133,11 @@ extension GetItInjectableX on _i174.GetIt {
         loginApiClient: gh<_i395.LoginApiClient>(),
       ),
     );
+    gh.factory<_i977.ExploreSubjectsRemoteDataSourceContract>(
+      () => _i609.ExploreSubjectsRemoteDataSourceImpl(
+        gh<_i1020.ExploreApiClient>(),
+      ),
+    );
     gh.factory<_i978.LoginLocalStoreClient>(
       () => _i978.LoginLocalStoreClient(gh<_i735.AppStorage>()),
     );
@@ -127,6 +149,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i553.SignUpRepoContract>(
       () => _i17.SignUpRepoImpl(
         remoteDataSource: gh<_i431.SignUpRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i186.ExploreSubjectsReposContract>(
+      () => _i358.ExploreSubjectsReposImpl(
+        gh<_i977.ExploreSubjectsRemoteDataSourceContract>(),
       ),
     );
     gh.factory<_i59.LoginLocalDataSourceContract>(
@@ -150,6 +177,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i201.ForgetPasswordCubit>(
       () => _i201.ForgetPasswordCubit(gh<_i982.ForgetPasswordUsecase>()),
     );
+    gh.factory<_i462.FetchExploreSubjectsUseCase>(
+      () => _i462.FetchExploreSubjectsUseCase(
+        gh<_i186.ExploreSubjectsReposContract>(),
+      ),
+    );
     gh.factory<_i909.LoginRepoContract>(
       () => _i937.LoginRepoImpl(
         remoteDataSource: gh<_i328.LoginRemoteDataSourceContract>(),
@@ -158,6 +190,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i594.SignUpUseCase>(
       () => _i594.SignUpUseCase(signUpRepo: gh<_i553.SignUpRepoContract>()),
+    );
+    gh.factory<_i1051.ExploreSubjectsCubit>(
+      () =>
+          _i1051.ExploreSubjectsCubit(gh<_i462.FetchExploreSubjectsUseCase>()),
     );
     gh.factory<_i1005.LoginUseCase>(
       () => _i1005.LoginUseCase(loginRepo: gh<_i909.LoginRepoContract>()),

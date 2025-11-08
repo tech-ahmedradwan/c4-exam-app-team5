@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ForgetPasswordUsecase {
-
   ForgetPasswordUsecase(this._forgetPasswordRepoContract);
   final ForgetPasswordRepoContract _forgetPasswordRepoContract;
   Future<BaseResponse<ForgetPasswordEntity>> call({required String email}) =>
