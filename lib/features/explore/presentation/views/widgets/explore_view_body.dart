@@ -7,6 +7,8 @@ import '../../../../../core/styles/app_text_styles.dart';
 import '../../../../../core/utils/app_sizes.dart';
 import '../../../../../core/widgets/custom_loading_widget.dart';
 import '../../view_models/explore_subjects/explore_subjects_cubit.dart';
+import '../../view_models/explore_subjects/explore_subjects_event.dart';
+import 'custom_search_textfield.dart';
 import 'subject_item_card.dart';
 
 class ExploreViewBody extends StatelessWidget {
@@ -15,10 +17,18 @@ class ExploreViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSizes.p16),
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.pw16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          CustomSearchTextfield(
+            onChanged: (value) {
+              context.read<ExploreSubjectsCubit>().doIntent(
+                SearchInSubjects(value: value),
+              );
+            },
+          ),
+          AppSizes.h40.verticalSpace,
           Text(
             AppStrings.browseBySubject,
             style: AppTextStyles.kBlack18Mediam(),
@@ -26,10 +36,10 @@ class ExploreViewBody extends StatelessWidget {
           AppSizes.h24.verticalSpace,
           Expanded(
             child: BlocBuilder<ExploreSubjectsCubit, ExploreSubjectsState>(
-              buildWhen: (previous, current) {
-                return previous.expolreSubjectsState.data !=
-                    current.expolreSubjectsState.data;
-              },
+              // buildWhen: (previous, current) {
+              //   return previous.expolreSubjectsState.data !=
+              //       current.expolreSubjectsState.data;
+              // },
               builder: (context, state) {
                 if (state.expolreSubjectsState.isLoading) {
                   return const CustomLoadingWidget();

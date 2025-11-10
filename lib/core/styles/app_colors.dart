@@ -10,7 +10,7 @@ class AppColors {
   static const Color placeHolderColor = Color(0xFFA6A6A6);
   static const Color borderColor = Color(0xFF535353);
   static const Color errorBorderColor = Colors.red;
-  static const Color disabledButtonColor = Color(0xFF878787);
+  static const Color lightGrayColor = Color(0xFF878787);
   static const Color lightBlueColor = Color(0xffEDEFF3);
   static const Color blueColor = Color(0xffCCD7EB);
   static const Color redErrorColor = Color(0xffCC1010);

@@ -38,7 +38,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: AppSizes.p16,
+        titleSpacing: AppSizes.pw16,
         title: Text(
           _homeLayoutEnum.appBarTitle,
           style: _homeLayoutEnum.index == 0

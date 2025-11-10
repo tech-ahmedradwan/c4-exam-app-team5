@@ -34,35 +34,35 @@ class AppThemes {
 
       contentPadding: EdgeInsets.symmetric(
         horizontal: AppSizes.h14,
-        vertical: AppSizes.p14,
+        vertical: AppSizes.pw14,
       ),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.borderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.borderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.errorBorderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.errorBorderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
     ),
