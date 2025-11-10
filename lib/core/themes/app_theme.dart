@@ -16,7 +16,18 @@ class AppThemes {
     ),
     splashFactory: NoSplash.splashFactory,
     scaffoldBackgroundColor: AppColors.backgroundColor,
+    cardTheme: CardThemeData(
+      elevation: AppSizes.w4, // Controls the size and intensity of the shadow
+      // Sets the color of the shadow
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppSizes.r10,
+        ), // Optional: for rounded corners
+      ),
 
+      color: AppColors.whiteColor,
+      shadowColor: AppColors.shadowColor.withValues(alpha: 0.25),
+    ),
     inputDecorationTheme: InputDecorationThemeData(
       hintStyle: AppTextStyles.kPlaceHolder14Regular(),
       labelStyle: AppTextStyles.kGrey12Regular(),
