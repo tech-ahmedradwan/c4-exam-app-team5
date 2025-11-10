@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-
 import '../../../../../core/constants/api_endpoints/api_keys.dart';
+import '../../../../../core/constants/app_strings/app_strings.dart';
 import '../../../../../core/errors/app_exceptions.dart';
 import '../../../data/datasources/remote/sign_up_remote_data_source_contract.dart';
 import '../../../data/models/sign_up_response/sign/sign_up_response.dart';
@@ -25,7 +25,7 @@ class SignUpRemoteDatasourceImpl implements SignUpRemoteDataSourceContract {
     });
 
     if (response.token == null || response.token!.isEmpty) {
-      throw AppException(message: response.message ?? 'Signup failed');
+      throw AppException(message: response.message ?? AppStrings.signUpError);
     }
 
     return response;

@@ -1,12 +1,14 @@
+import '../../../../core/constants/api_endpoints/api_keys.dart';
+
 class UserEntity {
   factory UserEntity.fromMap(Map<String, dynamic> data) => UserEntity(
-    username: data['username'],
-    firstName: data['firstName'],
-    lastName: data['lastName'],
-    email: data['email'],
-    password: data['password'],
-    rePassword: data['rePassword'],
-    phone: data['phone'],
+    username: data[ApiKeys.username],
+    firstName: data[ApiKeys.firstName],
+    lastName: data[ApiKeys.lastName],
+    email: data[ApiKeys.email],
+    password: data[ApiKeys.password],
+    rePassword: data[ApiKeys.rePassword],
+    phone: data[ApiKeys.phone],
   );
 
   UserEntity({
@@ -27,12 +29,12 @@ class UserEntity {
   final String phone;
 
   Map<String, dynamic> toMap() => {
-    'username': username,
-    'firstName': firstName,
-    'lastName': lastName,
-    'email': email,
-    'password': password,
-    'rePassword': rePassword,
-    'phone': phone,
+    ApiKeys.username: username,
+    ApiKeys.firstName: firstName,
+    ApiKeys.lastName: lastName,
+    ApiKeys.email: email,
+    ApiKeys.password: password,
+    ApiKeys.rePassword: rePassword,
+    ApiKeys.phone: phone,
   };
 }

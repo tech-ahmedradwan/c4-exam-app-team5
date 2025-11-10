@@ -29,15 +29,17 @@ class VerifyRestCodeCubit extends Cubit<VerifyRestCodeState> {
   }
 
   _resentCode({required String email}) {
-    emit(state.copyWith(
-      resendCodeState: const BaseState<VerifyResetCodeEntity>(
-        isLoading: true,
+    emit(
+      state.copyWith(
+        resendCodeState: const BaseState<VerifyResetCodeEntity>(
+          isLoading: true,
+        ),
       ),
-    ));
+    );
     getIt<ForgetPasswordCubit>().doIntety(ForgetPassword(email));
     emit(
       state.copyWith(
-        resendCodeState: BaseState<VerifyResetCodeEntity>(
+        resendCodeState: const BaseState<VerifyResetCodeEntity>(
           data: VerifyResetCodeEntity(status: 'Code resent successfully'),
         ),
       ),

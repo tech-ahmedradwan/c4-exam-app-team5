@@ -1,48 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../styles/app_colors.dart';
 import '../styles/app_text_styles.dart';
+import '../utils/app_sizes.dart';
 
 class AppThemes {
-  static light() => ThemeData(
+  static ThemeData light = ThemeData(
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.kBackgroundColor,
+      backgroundColor: AppColors.backgroundColor,
       titleTextStyle: AppTextStyles.kBlack20Mediam(),
       centerTitle: false,
       elevation: 0,
       scrolledUnderElevation: 0,
     ),
     splashFactory: NoSplash.splashFactory,
-    scaffoldBackgroundColor: AppColors.kBackgroundColor,
+    scaffoldBackgroundColor: AppColors.backgroundColor,
 
     inputDecorationTheme: InputDecorationThemeData(
       hintStyle: AppTextStyles.kPlaceHolder14Regular(),
       labelStyle: AppTextStyles.kGrey12Regular(),
 
-      contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: AppSizes.h14,
+        vertical: AppSizes.p14,
+      ),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.r),
-        borderSide: BorderSide(color: AppColors.kBorderColor, width: 1.5.w),
+        borderRadius: BorderRadius.circular(AppSizes.r4),
+        borderSide: BorderSide(
+          color: AppColors.borderColor,
+          width: AppSizes.w1_5,
+        ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.r),
-        borderSide: BorderSide(color: AppColors.kBorderColor, width: 1.5.w),
+        borderRadius: BorderRadius.circular(AppSizes.r4),
+        borderSide: BorderSide(
+          color: AppColors.borderColor,
+          width: AppSizes.w1_5,
+        ),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.r),
+        borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
-          color: AppColors.kErrorBorderColor,
-          width: 1.5.w,
+          color: AppColors.errorBorderColor,
+          width: AppSizes.w1_5,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(4.r),
+        borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
-          color: AppColors.kErrorBorderColor,
-          width: 1.5.w,
+          color: AppColors.errorBorderColor,
+          width: AppSizes.w1_5,
         ),
       ),
     ),
@@ -50,15 +59,15 @@ class AppThemes {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100.r),
+          borderRadius: BorderRadius.circular(AppSizes.r64),
         ),
-        backgroundColor: AppColors.kPrimaryColor,
+        backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.white,
         textStyle: AppTextStyles.kWhite16Medium(),
-        minimumSize: Size.fromHeight(48.h),
+        minimumSize: Size.fromHeight(AppSizes.h48),
       ),
     ),
   );
 
-  static dark() => ThemeData(brightness: Brightness.light);
+  static ThemeData dark = ThemeData(brightness: Brightness.dark);
 }

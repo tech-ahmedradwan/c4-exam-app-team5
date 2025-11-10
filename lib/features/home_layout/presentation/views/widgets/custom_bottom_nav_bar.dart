@@ -1,6 +1,7 @@
-import '../../../../../core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/styles/app_colors.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({required this.navItems, super.key});
@@ -9,7 +10,7 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 80.h,
-      decoration: const BoxDecoration(color: AppColors.kLightBlueColor),
+      decoration: const BoxDecoration(color: AppColors.lightBlueColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         spacing: 8.w,

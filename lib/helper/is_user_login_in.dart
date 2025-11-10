@@ -5,7 +5,7 @@ import '../core/constants/app_routes/app_routes.dart';
 import '../core/constants/cache_keys/app_cache_keys.dart';
 import '../core/services/local/app_storage/app_storage.dart';
 
-Future<String> isHomeNavigation() async {
+Future<String> isUserLogedIn() async {
   final String? token = await getIt<AppStorage>().getSecure(
     AppCacheKeys.userTokenKey,
   );

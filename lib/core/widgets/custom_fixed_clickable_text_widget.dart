@@ -1,7 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../styles/app_colors.dart';
 import '../styles/app_text_styles.dart';
 
 class CustomFixedTextAndClickableText extends StatelessWidget {
@@ -22,10 +20,7 @@ class CustomFixedTextAndClickableText extends StatelessWidget {
           TextSpan(text: fixedText, style: AppTextStyles.kBlack16Regular()),
           TextSpan(
             text: clickableText,
-            style: AppTextStyles.kBlack12UnderLineRegular().copyWith(
-              color: AppColors.kPrimaryColor,
-              fontSize: 16,
-            ),
+            style: AppTextStyles.kBlue16UnderLineRegular(),
             recognizer: TapGestureRecognizer()..onTap = onTap,
           ),
         ],
