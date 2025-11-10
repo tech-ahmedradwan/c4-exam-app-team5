@@ -16,42 +16,53 @@ class AppThemes {
     ),
     splashFactory: NoSplash.splashFactory,
     scaffoldBackgroundColor: AppColors.backgroundColor,
+    cardTheme: CardThemeData(
+      elevation: AppSizes.w4, // Controls the size and intensity of the shadow
+      // Sets the color of the shadow
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppSizes.r10,
+        ), // Optional: for rounded corners
+      ),
 
+      color: AppColors.whiteColor,
+      shadowColor: AppColors.shadowColor.withValues(alpha: 0.25),
+    ),
     inputDecorationTheme: InputDecorationThemeData(
       hintStyle: AppTextStyles.kPlaceHolder14Regular(),
       labelStyle: AppTextStyles.kGrey12Regular(),
 
       contentPadding: EdgeInsets.symmetric(
         horizontal: AppSizes.h14,
-        vertical: AppSizes.p14,
+        vertical: AppSizes.pw14,
       ),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.borderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.borderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.errorBorderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppSizes.r4),
         borderSide: BorderSide(
           color: AppColors.errorBorderColor,
-          width: AppSizes.w1_5,
+          width: AppSizes.w1,
         ),
       ),
     ),

@@ -1,11 +1,13 @@
-import '../../../explore/presentation/views/explore_view.dart';
-import '../../helper/home_layout_enum.dart';
-import '../../../profile/presentation/views/profile_view.dart';
-import '../../../result/presentation/views/result_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_strings/app_strings.dart';
+import '../../../../core/styles/app_text_styles.dart';
 import '../../../../core/styles/assets.gen.dart';
+import '../../../../core/utils/app_sizes.dart';
+import '../../../explore/presentation/views/explore_view.dart';
+import '../../../profile/presentation/views/profile_view.dart';
+import '../../../result/presentation/views/result_view.dart';
+import '../../helper/home_layout_enum.dart';
 import 'widgets/custom_bottom_nav_bar.dart';
 import 'widgets/custom_bottom_nav_bar_item.dart';
 
@@ -35,6 +37,15 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        titleSpacing: AppSizes.pw16,
+        title: Text(
+          _homeLayoutEnum.appBarTitle,
+          style: _homeLayoutEnum.index == 0
+              ? AppTextStyles.kBlue20Medium()
+              : AppTextStyles.kBlack20Mediam(),
+        ),
+      ),
       body: _screens[_homeLayoutEnum.index],
       bottomNavigationBar: CustomBottomNavBar(
         navItems: [

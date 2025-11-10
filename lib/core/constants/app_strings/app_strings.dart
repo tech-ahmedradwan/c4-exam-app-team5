@@ -64,6 +64,9 @@ abstract class AppStrings {
   static const String explore = 'Explore';
   static const String result = 'Result';
   static const String profile = 'Profile';
+  static const String exploreAppBar = 'Survey';
+  static const String resultAppBar = 'Results';
+  static const String profileAppBar = 'Profile';
   //------------Forget Password ------------------
   static const String password = 'password';
   static const String forgetPasswordDesc =
@@ -87,4 +90,8 @@ abstract class AppStrings {
   static const String resentCodeToast = 'Otp Resend Successfully';
   static const String loading = 'Loading...';
   static const String codeVerifiedSuccessToast = 'Code Verified Successfully';
+
+  //------------------ Explore --------------
+  static const String browseBySubject = 'Browse by subject';
+  static const String search = 'search';
 }

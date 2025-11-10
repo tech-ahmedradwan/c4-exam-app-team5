@@ -48,6 +48,16 @@ class AppTextStyles {
     color: AppColors.primaryColor,
     decoration: TextDecoration.underline,
   );
+  static TextStyle kBlue20Medium() => GoogleFonts.inter(
+    fontSize: AppSizes.fs16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryColor,
+  );
+  static TextStyle kBlack20Medium() => GoogleFonts.inter(
+    fontSize: AppSizes.fs16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.blackColor,
+  );
   static TextStyle kPlaceHolder14Regular() => GoogleFonts.roboto(
     fontSize: AppSizes.fs14,
     fontWeight: FontWeight.normal,
