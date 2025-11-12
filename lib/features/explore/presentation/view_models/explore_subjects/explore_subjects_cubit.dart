@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../config/base_state/base_state.dart';
@@ -26,6 +26,9 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
   }
 
   _fetchExploreSubjects() async {
+    // Check 1: Good, you have this
+    if (isClosed) return;
+
     emit(
       state.copyWith(
         expolreSubjectsState: state.expolreSubjectsState.copyWith(
@@ -33,29 +36,46 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
         ),
       ),
     );
+
     final result = await _fetchExploreSubjectsUseCase();
+
+    // Check 2: MUST check again after the await
+    if (isClosed) return;
+
     result.when(
       onSuccess: (success) {
         subjectList = success;
-        emit(
-          state.copyWith(
-            expolreSubjectsState: BaseState<List<ExploreSubjectEntity>>(
-              data: success,
+
+        // Check 3: Also need to check here
+        if (!isClosed) {
+          emit(
+            state.copyWith(
+              expolreSubjectsState: BaseState<List<ExploreSubjectEntity>>(
+                data: success,
+              ),
             ),
-          ),
-        );
+          );
+        }
       },
-      onError: (error) => emit(
-        state.copyWith(
-          expolreSubjectsState: BaseState<List<ExploreSubjectEntity>>(
-            errorMessage: error.message,
-          ),
-        ),
-      ),
+      onError: (error) {
+        // Check 4: And also here
+        if (!isClosed) {
+          emit(
+            state.copyWith(
+              expolreSubjectsState: BaseState<List<ExploreSubjectEntity>>(
+                errorMessage: error.message,
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 
   _searchnSubjects(String value) {
+    // Check 5: MUST check here
+    if (isClosed) return;
+
     searchedList = [];
     emit(
       state.copyWith(
@@ -71,6 +91,10 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
         searchedList.add(subject);
       }
     }
+
+    // Check 6: And MUST check here
+    if (isClosed) return;
+
     emit(
       state.copyWith(
         expolreSubjectsState: BaseState<List<ExploreSubjectEntity>>(
