@@ -49,9 +49,6 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.8.0
   shared_preferences: ^2.5.3
-  flutter_secure_storage: ^9.2.4
-  equatable: ^2.0.7
-  flutter_easyloading: ^3.0.5
   bloc: ^9.1.0
 
 dev_dependencies:

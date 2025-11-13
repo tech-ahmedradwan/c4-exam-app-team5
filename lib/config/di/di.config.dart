@@ -17,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/services/local/app_storage/app_storage.dart' as _i735;
 import '../../core/services/local/app_storage/app_storage_impl.dart' as _i696;
+import '../../features/exam/api/api_client/exam_api_client.dart' as _i682;
 import '../../features/explore/api/api_client/explore_api_client.dart'
     as _i1020;
 import '../../features/explore/api/data_source/remote/explore_subjects_remote_data_source_impl.dart'
@@ -99,6 +100,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => dioModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => storageModule.secureStorage,
+    );
+    gh.lazySingleton<_i682.ExamApiClient>(
+      () => _i682.ExamApiClient(gh<_i361.Dio>()),
     );
     gh.lazySingleton<_i1020.ExploreApiClient>(
       () => _i1020.ExploreApiClient(gh<_i361.Dio>()),
