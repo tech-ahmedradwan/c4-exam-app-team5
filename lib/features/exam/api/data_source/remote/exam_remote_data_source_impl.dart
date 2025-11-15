@@ -11,7 +11,7 @@ class ExamRemoteDataSourceImpl extends ExamRemoteDataSourceContract {
   final ExamApiClient _examApiClient;
 
   @override
-  Future<ExamQuestionsResponse> fetchExamQuestions({required String examId}) async {
-    return await _examApiClient.fetchExamQuestions(examId: examId);
+  Future<ExamQuestionsResponse> fetchExamQuestions({required String examId}) {
+    return _examApiClient.fetchExamQuestions(examId: examId);
   }
 }
