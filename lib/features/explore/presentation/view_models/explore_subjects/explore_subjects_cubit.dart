@@ -22,6 +22,8 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
         _fetchExploreSubjects();
       case SearchInSubjects():
         _searchnSubjects(event.value);
+      case NavigateToSubjectExams():
+        _navigateToSubjectExams(event.subjectId);
     }
   }
 
@@ -100,6 +102,14 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
         expolreSubjectsState: BaseState<List<ExploreSubjectEntity>>(
           data: searchedList.isEmpty ? null : searchedList,
         ),
+      ),
+    );
+  }
+
+  _navigateToSubjectExams(String subjectId) {
+    emit(
+      state.copyWith(
+        navigateToSubjectState: BaseState<String>(data: subjectId),
       ),
     );
   }
