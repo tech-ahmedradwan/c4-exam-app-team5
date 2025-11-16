@@ -25,10 +25,6 @@ class ExploreViewBody extends StatelessWidget {
           if (state.navigateToSubjectState.hasData) {
             final subjectId = state.navigateToSubjectState.data ?? '';
             context.pushNamed(AppRoutes.subjectExamsRoute, extra: subjectId);
-            // Reset navigation state to prevent repeated navigation
-            context.read<ExploreSubjectsCubit>().emit(
-              state.copyWith(navigateToSubjectState: const BaseState()),
-            );
           }
         },
         child: Column(
@@ -69,9 +65,7 @@ class ExploreViewBody extends StatelessWidget {
                       itemBuilder: (context, index) => GestureDetector(
                         onTap: () {
                           context.read<ExploreSubjectsCubit>().doIntent(
-                            NavigateToSubjectExams(
-                              subjectId: subjects[index].id ?? '',
-                            ),
+                            NavigateToSubjectExams(subject: subjects[index]),
                           );
                         },
                         child: SubjectItemCard(subject: subjects[index]),

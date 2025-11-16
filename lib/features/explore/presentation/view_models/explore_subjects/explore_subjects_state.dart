@@ -7,11 +7,11 @@ class ExploreSubjectsState extends Equatable {
   });
 
   final BaseState<List<ExploreSubjectEntity>> expolreSubjectsState;
-  final BaseState<String> navigateToSubjectState;
+  final BaseState<ExploreSubjectEntity> navigateToSubjectState;
 
   ExploreSubjectsState copyWith({
     BaseState<List<ExploreSubjectEntity>>? expolreSubjectsState,
-    BaseState<String>? navigateToSubjectState,
+    BaseState<ExploreSubjectEntity>? navigateToSubjectState,
   }) {
     return ExploreSubjectsState(
       expolreSubjectsState: expolreSubjectsState ?? this.expolreSubjectsState,

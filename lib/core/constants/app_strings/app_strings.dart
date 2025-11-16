@@ -94,4 +94,7 @@ abstract class AppStrings {
   //------------------ Explore --------------
   static const String browseBySubject = 'Browse by subject';
   static const String search = 'search';
+  static const String question = 'Question';
+  static const String minutes = 'Minutes';
+  static const String start = 'Start';
 }
