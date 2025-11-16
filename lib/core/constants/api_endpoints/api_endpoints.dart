@@ -12,5 +12,6 @@ class ApiEndpoints {
   static const String exploreSubjectsEndPoint = 'subjects';
   //---------------------------- QUESTION ENDPOINTS -----------------------------//
   static const String questionsEndPoint = 'questions';
-
+  //---------------------------- Exams ENDPOINTS -----------------------------//
+  static const String subjectExamsEndPoint = 'exams';
 }

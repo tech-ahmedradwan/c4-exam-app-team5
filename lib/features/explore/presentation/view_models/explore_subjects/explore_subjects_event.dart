@@ -9,3 +9,9 @@ final class SearchInSubjects extends ExploreSubjectsEvent {
 
   final String value;
 }
+
+final class NavigateToSubjectExams extends ExploreSubjectsEvent {
+  NavigateToSubjectExams({required this.subjectId});
+
+  final String subjectId;
+}

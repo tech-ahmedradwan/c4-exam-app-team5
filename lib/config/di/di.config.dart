@@ -93,6 +93,20 @@ import '../../features/signup/domain/repositories/sign_up_repo_contract.dart'
 import '../../features/signup/domain/usecases/sign_up_use_case.dart' as _i594;
 import '../../features/signup/presentation/view_models/sign_up_cubit.dart'
     as _i493;
+import '../../features/subject_exams/api/api_client/subject_exam_api_client.dart'
+    as _i250;
+import '../../features/subject_exams/api/remote_datasource_impl/subject_exams_remote_datasource_impl.dart'
+    as _i665;
+import '../../features/subject_exams/data/datasources/remote/get_subject_exams_remote_datasource_contract.dart'
+    as _i263;
+import '../../features/subject_exams/data/repos/subject_exams_repo_impl.dart'
+    as _i866;
+import '../../features/subject_exams/domain/repos/subject_exam_repo_contract.dart'
+    as _i415;
+import '../../features/subject_exams/domain/usecases/get_subject_exam_usecase.dart'
+    as _i383;
+import '../../features/subject_exams/presentation/view_models/subject_exam_cubit/subject_exams_cubit.dart'
+    as _i1000;
 import '../modules/dio_module/dio_module.dart' as _i624;
 import '../modules/storage_module/storage_module.dart' as _i409;
 
@@ -128,9 +142,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i786.SignUpApiClient>(
       () => _i786.SignUpApiClient(gh<_i361.Dio>()),
     );
+    gh.lazySingleton<_i250.SubjectExamApiClient>(
+      () => _i250.SubjectExamApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i161.ForgetPasswordRemoteDataSourceContract>(
       () => _i973.ForgetPasswordRemoteDataSourceImpl(
         gh<_i892.ForgetPasswordApiClient>(),
+      ),
+    );
+    gh.factory<_i263.SubjectExamsRemoteDatasourceContract>(
+      () => _i665.SubjectExamsRemoteDatasourceImpl(
+        gh<_i250.SubjectExamApiClient>(),
       ),
     );
     gh.factory<_i377.ForgetPasswordRepoContract>(
@@ -142,6 +164,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i696.AppStorageImpl(
         gh<_i460.SharedPreferences>(),
         gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
+    gh.factory<_i415.SubjectExamRepoContract>(
+      () => _i866.SubjectExamsRepoImpl(
+        gh<_i263.SubjectExamsRemoteDatasourceContract>(),
       ),
     );
     gh.factory<_i328.LoginRemoteDataSourceContract>(
@@ -181,6 +208,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i59.LoginLocalDataSourceContract>(
       () => _i182.LoginLocalDatasourceImpl(gh<_i978.LoginLocalStoreClient>()),
     );
+    gh.factory<_i383.GetSubjectExamUsecase>(
+      () => _i383.GetSubjectExamUsecase(gh<_i415.SubjectExamRepoContract>()),
+    );
     gh.factory<_i939.ResetPasswordUsecase>(
       () => _i939.ResetPasswordUsecase(gh<_i377.ForgetPasswordRepoContract>()),
     );
@@ -192,6 +222,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i433.VerifyRestCodeCubit>(
       () => _i433.VerifyRestCodeCubit(gh<_i492.VerifyResetOtpUsecase>()),
+    );
+    gh.factory<_i1000.SubjectExamsCubit>(
+      () => _i1000.SubjectExamsCubit(gh<_i383.GetSubjectExamUsecase>()),
     );
     gh.factory<_i107.ResetPasswordCubit>(
       () => _i107.ResetPasswordCubit(gh<_i939.ResetPasswordUsecase>()),
