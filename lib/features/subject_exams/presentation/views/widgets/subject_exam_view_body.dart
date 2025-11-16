@@ -14,7 +14,31 @@ class SubjectExamViewBody extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else if (state.subjectExamState.hasError) {
           return Center(
-            child: Text('Error: ${state.subjectExamState.errorMessage}'),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.error_outline, color: Colors.red, size: 48),
+                const SizedBox(height: 16),
+                const Text(
+                  'Something went wrong. Please try again.',
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+                if (state.subjectExamState.errorMessage != null &&
+                    state.subjectExamState.errorMessage!.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: Text(
+                      'Details: ${state.subjectExamState.errorMessage}',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+              ],
+            ),
           );
         } else if (state.subjectExamState.hasData &&
             state.subjectExamState.data!.isNotEmpty) {
