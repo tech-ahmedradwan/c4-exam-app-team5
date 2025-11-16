@@ -9,6 +9,7 @@ import '../../../features/forget_password/presentation/views/verify_reset_code_v
 import '../../../features/home_layout/presentation/views/home_layout_view.dart';
 import '../../../features/login/presentation/views/login_view.dart';
 import '../../../features/signup/presentation/views/sign_up_view.dart';
+import '../../../features/subject_exams/presentation/views/subject_exam_view.dart';
 
 class AppRouter {
   static GoRouter initialize({String? initialRoute}) {
@@ -52,6 +53,14 @@ class AppRouter {
           builder: (context, state) {
             final String email = state.extra as String;
             return ResetPasswordView(email: email);
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.subjectExamsRoute,
+          name: AppRoutes.subjectExamsRoute,
+          builder: (context, state) {
+            final String subjectId = state.extra as String;
+            return SubjectExamView(subjectId: subjectId);
           },
         ),
       ],
