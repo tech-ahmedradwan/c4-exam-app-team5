@@ -23,7 +23,7 @@ void main() {
       final userId = 'testUserId';
       when(
         loginLocalStoreClient.cacheLoginData(token: token, userId: userId),
-      ).thenAnswer((_) async => Future.value());
+      );
 
       /// Act
       final result = loginLocalDatasourceImpl.cacheLoginData(
