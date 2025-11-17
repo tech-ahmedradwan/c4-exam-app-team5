@@ -26,9 +26,7 @@ class ExploreViewBody extends StatelessWidget {
             final subjectId = state.navigateToSubjectState.data ?? '';
             context.pushNamed(AppRoutes.subjectExamsRoute, extra: subjectId);
             // Reset navigation state to prevent repeated navigation
-            context.read<ExploreSubjectsCubit>().emit(
-              state.copyWith(navigateToSubjectState: const BaseState()),
-            );
+            context.read<ExploreSubjectsCubit>().resetNavigateToSubjectState();
           }
         },
         child: Column(

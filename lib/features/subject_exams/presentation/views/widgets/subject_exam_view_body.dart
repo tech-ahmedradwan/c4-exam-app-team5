@@ -17,7 +17,7 @@ class SubjectExamViewBody extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.error_outline, color: Colors.red, size: 48),
+                const Icon(Icons.error_outline, color: Colors.red, size: 48),
                 const SizedBox(height: 16),
                 const Text(
                   'Something went wrong. Please try again.',
@@ -30,10 +30,7 @@ class SubjectExamViewBody extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Text(
                       'Details: ${state.subjectExamState.errorMessage}',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
+                      style: const TextStyle(fontSize: 12, color: Colors.grey),
                       textAlign: TextAlign.center,
                     ),
                   ),
