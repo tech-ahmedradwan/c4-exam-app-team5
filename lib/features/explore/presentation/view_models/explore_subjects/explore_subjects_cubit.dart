@@ -16,18 +16,18 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
   List<ExploreSubjectEntity> subjectList = [];
   List<ExploreSubjectEntity> searchedList = [];
   final FetchExploreSubjectsUseCase _fetchExploreSubjectsUseCase;
-  doIntent(ExploreSubjectsEvent event) {
+  void doIntent(ExploreSubjectsEvent event) {
     switch (event) {
       case FetchExploreSubjects():
         _fetchExploreSubjects();
       case SearchInSubjects():
-        _searchnSubjects(event.value);
+        _searchOnSubjects(event.value);
       case NavigateToSubjectExams():
         _navigateToSubjectExams(event.subject);
     }
   }
 
-  _fetchExploreSubjects() async {
+  void _fetchExploreSubjects() async {
     // Check 1: Good, you have this
     if (isClosed) return;
 
@@ -74,7 +74,7 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
     );
   }
 
-  _searchnSubjects(String value) {
+  void _searchOnSubjects(String value) {
     // Check 5: MUST check here
     if (isClosed) return;
 
@@ -106,10 +106,18 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
     );
   }
 
-  _navigateToSubjectExams(ExploreSubjectEntity subject) {
+  void _navigateToSubjectExams(ExploreSubjectEntity subject) {
     emit(
       state.copyWith(
         navigateToSubjectState: BaseState<ExploreSubjectEntity>(data: subject),
+      ),
+    );
+  }
+
+  void resetNavigateToSubjectState() {
+    emit(
+      state.copyWith(
+        navigateToSubjectState: const BaseState<ExploreSubjectEntity>(),
       ),
     );
   }

@@ -25,6 +25,8 @@ class ExploreViewBody extends StatelessWidget {
           if (state.navigateToSubjectState.hasData) {
             final subjectId = state.navigateToSubjectState.data ?? '';
             context.pushNamed(AppRoutes.subjectExamsRoute, extra: subjectId);
+            // Reset navigation state to prevent repeated navigation
+            context.read<ExploreSubjectsCubit>().resetNavigateToSubjectState();
           }
         },
         child: Column(
