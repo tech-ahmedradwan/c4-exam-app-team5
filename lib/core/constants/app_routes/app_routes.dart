@@ -7,4 +7,5 @@ class AppRoutes {
   static const resetPasswordRoute = '/resetPassword';
   static const homeRoute = '/home';
   static const subjectExamsRoute = '/subject-exams';
+  static const examStartRoute = '/exam-start';
 }

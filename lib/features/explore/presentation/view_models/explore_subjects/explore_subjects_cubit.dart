@@ -23,7 +23,7 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
       case SearchInSubjects():
         _searchOnSubjects(event.value);
       case NavigateToSubjectExams():
-        _navigateToSubjectExams(event.subjectId);
+        _navigateToSubjectExams(event.subject);
     }
   }
 
@@ -106,15 +106,19 @@ class ExploreSubjectsCubit extends Cubit<ExploreSubjectsState> {
     );
   }
 
-  void _navigateToSubjectExams(String subjectId) {
+  void _navigateToSubjectExams(ExploreSubjectEntity subject) {
     emit(
       state.copyWith(
-        navigateToSubjectState: BaseState<String>(data: subjectId),
+        navigateToSubjectState: BaseState<ExploreSubjectEntity>(data: subject),
       ),
     );
   }
 
   void resetNavigateToSubjectState() {
-    emit(state.copyWith(navigateToSubjectState: const BaseState<String>()));
+    emit(
+      state.copyWith(
+        navigateToSubjectState: const BaseState<ExploreSubjectEntity>(),
+      ),
+    );
   }
 }

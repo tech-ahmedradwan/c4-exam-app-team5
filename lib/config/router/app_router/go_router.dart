@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../core/constants/app_routes/app_routes.dart';
 import '../../../core/constants/app_strings/app_strings.dart';
+import '../../../features/explore/domain/entity/explore_subject_entity.dart';
 import '../../../features/forget_password/presentation/views/forget_password_view.dart';
 import '../../../features/forget_password/presentation/views/reset_password_view.dart';
 import '../../../features/forget_password/presentation/views/verify_reset_code_view.dart';
 import '../../../features/home_layout/presentation/views/home_layout_view.dart';
 import '../../../features/login/presentation/views/login_view.dart';
 import '../../../features/signup/presentation/views/sign_up_view.dart';
+import '../../../features/subject_exams/domain/entity/subject_exam_entity.dart';
+import '../../../features/subject_exams/presentation/views/exam_start_view.dart';
 import '../../../features/subject_exams/presentation/views/subject_exam_view.dart';
 
 class AppRouter {
@@ -59,8 +61,18 @@ class AppRouter {
           path: AppRoutes.subjectExamsRoute,
           name: AppRoutes.subjectExamsRoute,
           builder: (context, state) {
-            final String subjectId = state.extra as String;
-            return SubjectExamView(subjectId: subjectId);
+            final ExploreSubjectEntity subject =
+                state.extra as ExploreSubjectEntity;
+            return SubjectExamView(subject: subject);
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.examStartRoute,
+          name: AppRoutes.examStartRoute,
+          builder: (context, state) {
+            final SubjectExamEntity subjectExamEntity =
+                state.extra as SubjectExamEntity;
+            return ExamStartView(subjectExamEntity: subjectExamEntity);
           },
         ),
       ],

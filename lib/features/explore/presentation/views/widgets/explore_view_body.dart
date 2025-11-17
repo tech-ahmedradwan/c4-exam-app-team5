@@ -67,9 +67,7 @@ class ExploreViewBody extends StatelessWidget {
                       itemBuilder: (context, index) => GestureDetector(
                         onTap: () {
                           context.read<ExploreSubjectsCubit>().doIntent(
-                            NavigateToSubjectExams(
-                              subjectId: subjects[index].id ?? '',
-                            ),
+                            NavigateToSubjectExams(subject: subjects[index]),
                           );
                         },
                         child: SubjectItemCard(subject: subjects[index]),
