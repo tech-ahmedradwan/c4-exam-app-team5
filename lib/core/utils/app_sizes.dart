@@ -4,6 +4,7 @@ class AppSizes {
   const AppSizes._();
 
   /// App Sizes - heights
+  static final double h4 = 4.0.h;
   static final double h8 = 8.0.h;
   static final double h12 = 12.0.h;
   static final double h14 = 14.0.h;
@@ -16,6 +17,7 @@ class AppSizes {
   static final double h56 = 56.0.h;
   static final double h64 = 64.0.h;
   static final double h80 = 80.0.h;
+  static final double h100 = 100.0.h;
 
   /// App Sizes - widths
   static final double w1 = 1.0.w;
