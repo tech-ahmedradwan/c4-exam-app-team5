@@ -1,3 +1,5 @@
+import '../../../domain/entity/explore_subject_entity.dart';
+
 sealed class ExploreSubjectsEvent {
   const ExploreSubjectsEvent();
 }
@@ -11,7 +13,7 @@ final class SearchInSubjects extends ExploreSubjectsEvent {
 }
 
 final class NavigateToSubjectExams extends ExploreSubjectsEvent {
-  NavigateToSubjectExams({required this.subjectId});
+  NavigateToSubjectExams({required this.subject});
 
-  final String subjectId;
+  final ExploreSubjectEntity subject;
 }

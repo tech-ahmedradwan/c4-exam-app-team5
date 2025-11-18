@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/constants/app_routes/app_routes.dart';
+import '../../../../../core/utils/app_sizes.dart';
 import '../../view_models/subject_exam_cubit/subject_exams_cubit.dart';
+import 'custom_subject_exam_card.dart';
 
 class SubjectExamViewBody extends StatelessWidget {
   const SubjectExamViewBody({super.key});
@@ -17,7 +21,7 @@ class SubjectExamViewBody extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.error_outline, color: Colors.red, size: 48),
+                const Icon(Icons.error_outline, color: Colors.red, size: 48),
                 const SizedBox(height: 16),
                 const Text(
                   'Something went wrong. Please try again.',
@@ -30,10 +34,7 @@ class SubjectExamViewBody extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Text(
                       'Details: ${state.subjectExamState.errorMessage}',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
+                      style: const TextStyle(fontSize: 12, color: Colors.grey),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -43,16 +44,20 @@ class SubjectExamViewBody extends StatelessWidget {
         } else if (state.subjectExamState.hasData &&
             state.subjectExamState.data!.isNotEmpty) {
           final exams = state.subjectExamState.data!;
-          return ListView.builder(
-            itemCount: exams.length,
-            itemBuilder: (context, index) {
-              final exam = exams[index];
-              return ListTile(
-                // ignore: prefer_single_quotes
-                title: Text(exam.title ?? ""),
-                subtitle: Text('Duration: ${exam.duration ?? ""}'),
-              );
-            },
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppSizes.pw24),
+            child: ListView.builder(
+              itemCount: exams.length,
+              itemBuilder: (context, index) {
+                final exam = exams[index];
+                return GestureDetector(
+                  onTap: () {
+                    context.pushNamed(AppRoutes.examStartRoute, extra: exam);
+                  },
+                  child: SubjectExamCard(exam: exam),
+                );
+              },
+            ),
           );
         } else {
           return const Center(child: Text('No Exams Available'));
