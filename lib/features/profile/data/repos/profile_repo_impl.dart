@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../config/base_response/base_response.dart';
 import '../../../../core/errors/app_exceptions.dart';
 import '../../../../core/errors/failure.dart';
@@ -13,7 +14,7 @@ class ProfileRepoImpl implements ProfileRepoContract {
   const ProfileRepoImpl(this._remoteDataSource);
   final ProfileRemoteDataSourceContract _remoteDataSource;
   @override
-  Future<BaseResponse<ChangePsswordEntity>> changeUserPassword(
+  Future<BaseResponse<ChangePasswordEntity>> changeUserPassword(
     Map<String, dynamic> passwordData,
   ) async {
     try {

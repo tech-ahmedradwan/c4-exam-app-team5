@@ -13,8 +13,8 @@ class ChangePasswordResponse {
   }
   String? message;
   String? token;
-  ChangePsswordEntity toEntity() {
-    return ChangePsswordEntity(message: message, token: token);
+  ChangePasswordEntity toEntity() {
+    return ChangePasswordEntity(message: message, token: token);
   }
 
   Map<String, dynamic> toJson() => _$ChangePasswordResponseToJson(this);
