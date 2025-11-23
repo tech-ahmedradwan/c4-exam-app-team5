@@ -11,7 +11,10 @@ class ProfileState extends Equatable {
     BaseState<ChangePasswordEntity>? changePasswordState,
     BaseState<ProfileEntity>? userProfileState,
   }) {
-    return const ProfileState();
+    return ProfileState(
+      changePasswordState: changePasswordState ?? this.changePasswordState,
+      userProfileState: userProfileState ?? this.userProfileState,
+    );
   }
 
   @override

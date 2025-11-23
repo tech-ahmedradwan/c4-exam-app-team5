@@ -8,7 +8,7 @@ final class LoadUserProfile extends ProfileEvents {}
 final class UpdateUserProfile extends ProfileEvents {
   UpdateUserProfile({required this.userProfile});
 
-  UserProfileDto userProfile;
+  final UserProfileDto userProfile;
 }
 
 final class ChangeUserPassword extends ProfileEvents {

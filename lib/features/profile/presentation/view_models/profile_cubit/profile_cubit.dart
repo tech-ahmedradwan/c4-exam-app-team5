@@ -29,7 +29,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     switch (event) {
       case LoadUserProfile():
         _getUserProfile();
-        throw UnimplementedError();
       case UpdateUserProfile():
         _chageUserProfile(event.userProfile);
       case ChangeUserPassword():
