@@ -7,7 +7,7 @@ abstract class ProfileRepoContract {
   Future<BaseResponse<ProfileEntity>> updateUserProfile(
     Map<String, dynamic> updateData,
   );
-  Future<BaseResponse<ChangePsswordEntity>> changeUserPassword(
+  Future<BaseResponse<ChangePasswordEntity>> changeUserPassword(
     Map<String, dynamic> passwordData,
   );
 }

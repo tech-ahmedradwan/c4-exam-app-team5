@@ -9,7 +9,7 @@ import '../repos/profile_repo_contract.dart';
 class ChangePassowrdUsecase {
   const ChangePassowrdUsecase(this._profileRepo);
   final ProfileRepoContract _profileRepo;
-  Future<BaseResponse<ChangePsswordEntity>> call({
+  Future<BaseResponse<ChangePasswordEntity>> call({
     required ChangePasswordDto passwordData,
   }) => _profileRepo.changeUserPassword(passwordData.toJson());
 }
