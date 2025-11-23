@@ -14,4 +14,8 @@ class ApiEndpoints {
   static const String questionsEndPoint = 'questions';
   //---------------------------- Exams ENDPOINTS -----------------------------//
   static const String subjectExamsEndPoint = 'exams';
+  //---------------------------- PROFILE ENDPOINTS -----------------------------//
+  static const String profileEndPoint = '/auth/profileData';
+  static const String updateProfileEndPoint = '/auth/editProfile';
+  static const String changePasswordEndPoint = '/auth/changePassword';
 }

@@ -82,6 +82,20 @@ import '../../features/login/domain/repos/login_repo_contract.dart' as _i909;
 import '../../features/login/domain/usecases/login_use_case.dart' as _i1005;
 import '../../features/login/presentation/view_models/cubit/login_cubit.dart'
     as _i421;
+import '../../features/profile/api/api_client/profile_api_client.dart' as _i699;
+import '../../features/profile/api/data_srource/remote_datasource/profile_remote_datasource_impl.dart'
+    as _i912;
+import '../../features/profile/data/data_source/profile_remote_data_source/profile_remote_data_source_contract.dart'
+    as _i970;
+import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
+import '../../features/profile/domain/repos/profile_repo_contract.dart'
+    as _i341;
+import '../../features/profile/domain/use_cases/change_passowrd_usecase.dart'
+    as _i306;
+import '../../features/profile/domain/use_cases/get_user_info_usecase.dart'
+    as _i1014;
+import '../../features/profile/domain/use_cases/update_user_info_use_case.dart'
+    as _i809;
 import '../../features/signup/api/api_client/sign_up_api_client.dart' as _i786;
 import '../../features/signup/api/data_sources/remote/sign_up_remote_datasource_impl.dart'
     as _i542;
@@ -139,6 +153,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i395.LoginApiClient>(
       () => _i395.LoginApiClient(gh<_i361.Dio>()),
     );
+    gh.lazySingleton<_i699.ProfileApiClient>(
+      () => _i699.ProfileApiClient(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i786.SignUpApiClient>(
       () => _i786.SignUpApiClient(gh<_i361.Dio>()),
     );
@@ -181,6 +198,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1020.ExploreApiClient>(),
       ),
     );
+    gh.factory<_i970.ProfileRemoteDataSourceContract>(
+      () => _i912.ProfileRemoteDatasourceImpl(gh<_i699.ProfileApiClient>()),
+    );
     gh.factory<_i667.ExamRemoteDataSourceContract>(
       () => _i195.ExamRemoteDataSourceImpl(gh<_i682.ExamApiClient>()),
     );
@@ -194,6 +214,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i651.ExamRepoContract>(
       () => _i790.ExamRepoImpl(gh<_i667.ExamRemoteDataSourceContract>()),
+    );
+    gh.factory<_i341.ProfileRepoContract>(
+      () => _i1072.ProfileRepoImpl(gh<_i970.ProfileRemoteDataSourceContract>()),
     );
     gh.factory<_i553.SignUpRepoContract>(
       () => _i17.SignUpRepoImpl(
@@ -251,6 +274,15 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i328.LoginRemoteDataSourceContract>(),
         localDataSource: gh<_i59.LoginLocalDataSourceContract>(),
       ),
+    );
+    gh.factory<_i306.ChangePassowrdUsecase>(
+      () => _i306.ChangePassowrdUsecase(gh<_i341.ProfileRepoContract>()),
+    );
+    gh.factory<_i1014.GetUserInfoUsecase>(
+      () => _i1014.GetUserInfoUsecase(gh<_i341.ProfileRepoContract>()),
+    );
+    gh.factory<_i809.UpdateUserInfoUsecase>(
+      () => _i809.UpdateUserInfoUsecase(gh<_i341.ProfileRepoContract>()),
     );
     gh.factory<_i594.SignUpUseCase>(
       () => _i594.SignUpUseCase(signUpRepo: gh<_i553.SignUpRepoContract>()),
