@@ -37,8 +37,7 @@ class AppRouter {
           name: AppRoutes.homeRoute,
 
           builder: (context, state) {
-            final int initalIndex = state.extra as int? ?? 0;
-            return HomeLayoutView(initialIndex: initalIndex);
+            return const HomeLayoutView();
           },
         ),
         GoRoute(

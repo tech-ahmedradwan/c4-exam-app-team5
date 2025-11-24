@@ -101,6 +101,12 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
           );
         } else {
           _initialUserProfile = cubit.initialUserProfile;
+          _nameController.text = _initialUserProfile.username ?? '';
+          _firstNameController.text = _initialUserProfile.firstName ?? '';
+          _lastNameController.text = _initialUserProfile.lastName ?? '';
+          _emailController.text = _initialUserProfile.email ?? '';
+          _phoneController.text = _initialUserProfile.phone ?? '';
+
           return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: AppSizes.h16),
@@ -137,8 +143,8 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
                       children: [
                         TextFormField(
                           validator: validateUserName,
-                          controller: _nameController
-                            ..text = _initialUserProfile.username ?? '',
+                          controller: _nameController,
+
                           decoration: const InputDecoration(
                             labelText: AppStrings.usernameLabel,
                           ),
@@ -149,8 +155,8 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
                             Expanded(
                               child: TextFormField(
                                 validator: validateFirstName,
-                                controller: _firstNameController
-                                  ..text = _initialUserProfile.firstName ?? '',
+                                controller: _firstNameController,
+
                                 decoration: const InputDecoration(
                                   labelText: AppStrings.firstNameLabel,
                                 ),
@@ -159,8 +165,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
                             Expanded(
                               child: TextFormField(
                                 validator: validateLastName,
-                                controller: _lastNameController
-                                  ..text = _initialUserProfile.lastName ?? '',
+                                controller: _lastNameController,
                                 decoration: const InputDecoration(
                                   labelText: AppStrings.lastNameLabel,
                                 ),
@@ -170,20 +175,16 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
                         ),
                         TextFormField(
                           validator: validateEmail,
-                          controller: _emailController
-                            ..text = _initialUserProfile.email ?? '',
+                          controller: _emailController,
                           decoration: const InputDecoration(
                             labelText: AppStrings.emailLabel,
                           ),
                         ),
                         TextFormField(
-                          validator: validatePassword,
                           obscureText: true,
                           obscuringCharacter: '★',
                           readOnly: true,
-                          controller: TextEditingController(
-                            text: AppStrings.password,
-                          ),
+                          initialValue: AppStrings.password,
                           style: AppTextStyles.kLightBlack12SemiBold(),
                           decoration: InputDecoration(
                             labelText: AppStrings.passwordLabel,
@@ -204,8 +205,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
                         ),
                         TextFormField(
                           validator: validatePhoneNumber,
-                          controller: _phoneController
-                            ..text = _initialUserProfile.phone ?? '',
+                          controller: _phoneController,
                           decoration: const InputDecoration(
                             labelText: AppStrings.phoneNumberLabel,
                           ),
