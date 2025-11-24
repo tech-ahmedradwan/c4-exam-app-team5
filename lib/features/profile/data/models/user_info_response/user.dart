@@ -42,4 +42,27 @@ class UserProfileDto {
       phone: phone,
     );
   }
+
+  @override
+  operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is UserProfileDto &&
+        other.id == id &&
+        other.username == username &&
+        other.firstName == firstName &&
+        other.lastName == lastName &&
+        other.email == email &&
+        other.phone == phone;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        username.hashCode ^
+        firstName.hashCode ^
+        lastName.hashCode ^
+        email.hashCode ^
+        phone.hashCode;
+  }
 }

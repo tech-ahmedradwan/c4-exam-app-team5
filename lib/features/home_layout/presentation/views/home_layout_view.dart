@@ -12,7 +12,8 @@ import 'widgets/custom_bottom_nav_bar.dart';
 import 'widgets/custom_bottom_nav_bar_item.dart';
 
 class HomeLayoutView extends StatefulWidget {
-  const HomeLayoutView({super.key});
+  const HomeLayoutView({super.key, this.initialIndex = 0});
+  final int initialIndex;
 
   @override
   State<HomeLayoutView> createState() => _HomeLayoutViewState();
@@ -21,8 +22,10 @@ class HomeLayoutView extends StatefulWidget {
 class _HomeLayoutViewState extends State<HomeLayoutView> {
   late HomeLayoutEnum _homeLayoutEnum;
   late List<Widget> _screens;
+  late int _currentIndex;
   @override
   void initState() {
+    _currentIndex = widget.initialIndex;
     _homeLayoutEnum = HomeLayoutEnum.explore;
     _screens = [const ExploreView(), const ResultView(), const ProfileView()];
     super.initState();
@@ -31,6 +34,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
   void _onTapNavIcon(HomeLayoutEnum navEnum) {
     setState(() {
       _homeLayoutEnum = navEnum;
+      _currentIndex = navEnum.index;
     });
   }
 
@@ -46,7 +50,7 @@ class _HomeLayoutViewState extends State<HomeLayoutView> {
               : AppTextStyles.kBlack20Mediam(),
         ),
       ),
-      body: _screens[_homeLayoutEnum.index],
+      body: _screens[_currentIndex],
       bottomNavigationBar: CustomBottomNavBar(
         navItems: [
           GestureDetector(

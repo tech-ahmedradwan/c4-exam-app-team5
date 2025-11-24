@@ -18,7 +18,7 @@ abstract class DioModule {
         responseType: ResponseType.json,
       ),
     );
-    dio.interceptors.add(PrettyDioLogger());
+    dio.interceptors.add(PrettyDioLogger(requestBody: true));
     dio.interceptors.add(AppErrorInterceptor());
     dio.interceptors.add(OnRequestInterceptor());
 

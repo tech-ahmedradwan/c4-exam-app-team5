@@ -96,6 +96,8 @@ import '../../features/profile/domain/use_cases/get_user_info_usecase.dart'
     as _i1014;
 import '../../features/profile/domain/use_cases/update_user_info_use_case.dart'
     as _i809;
+import '../../features/profile/presentation/view_models/profile_cubit/profile_cubit.dart'
+    as _i393;
 import '../../features/signup/api/api_client/sign_up_api_client.dart' as _i786;
 import '../../features/signup/api/data_sources/remote/sign_up_remote_datasource_impl.dart'
     as _i542;
@@ -286,6 +288,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i594.SignUpUseCase>(
       () => _i594.SignUpUseCase(signUpRepo: gh<_i553.SignUpRepoContract>()),
+    );
+    gh.factory<_i393.ProfileCubit>(
+      () => _i393.ProfileCubit(
+        gh<_i306.ChangePassowrdUsecase>(),
+        gh<_i1014.GetUserInfoUsecase>(),
+        gh<_i809.UpdateUserInfoUsecase>(),
+      ),
     );
     gh.factory<_i1051.ExploreSubjectsCubit>(
       () =>

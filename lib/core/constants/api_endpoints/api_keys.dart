@@ -14,6 +14,5 @@ class ApiKeys {
   static const String subject = 'subject';
 
   static const String oldPassword = 'oldPassword';
-
   static const String confirmPassword = 'confirmPassword';
 }

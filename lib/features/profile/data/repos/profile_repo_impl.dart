@@ -2,8 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../config/base_response/base_response.dart';
+import '../../../../config/di/di.dart';
+import '../../../../core/constants/cache_keys/app_cache_keys.dart';
 import '../../../../core/errors/app_exceptions.dart';
 import '../../../../core/errors/failure.dart';
+import '../../../../core/services/local/app_storage/app_storage.dart';
 import '../../domain/entity/change_pssword_entity.dart';
 import '../../domain/entity/profile_entity.dart';
 import '../../domain/repos/profile_repo_contract.dart';
@@ -19,6 +22,10 @@ class ProfileRepoImpl implements ProfileRepoContract {
   ) async {
     try {
       final response = await _remoteDataSource.changePassword(passwordData);
+      getIt<AppStorage>().saveSecure(
+        AppCacheKeys.userTokenKey,
+        response.token ?? '',
+      );
       return SuccessResponse(response.toEntity());
     } on DioException catch (e) {
       if (e.error is AppException) {

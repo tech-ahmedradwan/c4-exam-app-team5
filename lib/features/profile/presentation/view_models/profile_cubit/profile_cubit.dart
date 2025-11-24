@@ -24,6 +24,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   final ChangePassowrdUsecase _changePassowrdUsecase;
   final GetUserInfoUsecase _getUserInfoUsecase;
   final UpdateUserInfoUsecase _updateUserInfoUsecase;
+  late UserProfileDto initialUserProfile;
 
   void doIntent(ProfileEvents event) {
     switch (event) {
@@ -78,6 +79,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     final response = await _getUserInfoUsecase();
     response.when(
       onSuccess: (data) {
+        initialUserProfile = data.toDto();
         emit(
           state.copyWith(
             userProfileState: state.userProfileState.copyWith(
@@ -103,15 +105,16 @@ class ProfileCubit extends Cubit<ProfileState> {
   _chageUserProfile(UserProfileDto userProfileData) async {
     emit(
       state.copyWith(
-        userProfileState: state.userProfileState.copyWith(isLoading: true),
+        updateProfileState: state.updateProfileState.copyWith(isLoading: true),
       ),
     );
     final response = await _updateUserInfoUsecase(userProfileData.toEntity());
     response.when(
       onSuccess: (data) {
+        initialUserProfile = data.toDto();
         emit(
           state.copyWith(
-            userProfileState: state.userProfileState.copyWith(
+            updateProfileState: state.updateProfileState.copyWith(
               isLoading: false,
               data: data,
             ),
@@ -121,7 +124,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       onError: (failure) {
         emit(
           state.copyWith(
-            userProfileState: state.userProfileState.copyWith(
+            updateProfileState: state.updateProfileState.copyWith(
               isLoading: false,
               errorMessage: failure.message,
             ),

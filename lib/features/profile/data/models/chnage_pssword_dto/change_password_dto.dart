@@ -13,8 +13,8 @@ class ChangePasswordDto {
   Map<String, dynamic> toJson() {
     return {
       ApiKeys.oldPassword: oldPassword,
-      ApiKeys.newPassword: newPassword,
-      ApiKeys.confirmPassword: confirmPassword,
+      ApiKeys.password: newPassword,
+      ApiKeys.rePassword: confirmPassword,
     };
   }
 }
