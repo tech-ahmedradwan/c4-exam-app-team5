@@ -10,6 +10,6 @@ class FetchExamQuestionsUseCase {
 
   final ExamRepoContract _examRepo;
 
-  Future<BaseResponse<List<QuestionEntity>>> call(String examId) =>
+  Future<BaseResponse<List<QuestionEntity>>> call({required String examId}) =>
       _examRepo.fetchExamQuestions(examId);
 }
