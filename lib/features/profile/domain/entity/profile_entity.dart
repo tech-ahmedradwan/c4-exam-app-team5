@@ -1,4 +1,5 @@
 import '../../../../core/constants/api_endpoints/api_keys.dart';
+import '../../data/models/user_info_response/user.dart';
 
 class ProfileEntity {
   ProfileEntity({
@@ -25,5 +26,16 @@ class ProfileEntity {
       ApiKeys.email: email,
       ApiKeys.phone: phone,
     };
+  }
+
+  UserProfileDto toDto() {
+    return UserProfileDto(
+      id: id,
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+    );
   }
 }
