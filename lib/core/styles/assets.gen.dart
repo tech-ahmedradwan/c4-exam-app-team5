@@ -38,11 +38,18 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/clock.png
+  AssetGenImage get clock => const AssetGenImage('assets/images/clock.png');
+
   /// File path: assets/images/exam.png
   AssetGenImage get exam => const AssetGenImage('assets/images/exam.png');
 
+  /// File path: assets/images/sand_clock.png
+  AssetGenImage get sandClock =>
+      const AssetGenImage('assets/images/sand_clock.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [exam];
+  List<AssetGenImage> get values => [clock, exam, sandClock];
 }
 
 class Assets {

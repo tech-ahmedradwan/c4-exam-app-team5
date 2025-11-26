@@ -21,6 +21,7 @@ class AppSizes {
 
   /// App Sizes - widths
   static final double w1 = 1.0.w;
+  static final double w2 = 2.0.w;
   static final double w4 = 4.0.w;
   static final double w8 = 8.0.w;
   static final double w12 = 12.0.w;
@@ -60,6 +61,7 @@ class AppSizes {
   static final double r48 = 48.0.r;
   static final double r56 = 56.0.r;
   static final double r64 = 64.0.r;
+  static final double r100 = 100.0.r;
 
   /// App Sizes - padding horizontal
   static final double pw4 = 4.0.w;
@@ -74,6 +76,11 @@ class AppSizes {
   static final double pw48 = 48.0.w;
   static final double pw56 = 56.0.w;
   static final double pw64 = 64.0.w;
+
+  /// App Sizes - padding vertical
+  static final double pv4 = 4.0.h;
+  static final double pv8 = 8.0.h;
+  static final double pv16 = 16.0.h;
 
   /// App Sizes - icon sizes
   static final double icon16 = 16.0.r;

@@ -8,4 +8,6 @@ class AppRoutes {
   static const homeRoute = '/home';
   static const subjectExamsRoute = '/subject-exams';
   static const examStartRoute = '/exam-start';
+  static const examQuestionsRoute = '/exam-questions';
+  static const examScoreRoute = '/exam-score';
 }

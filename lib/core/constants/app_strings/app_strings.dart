@@ -97,4 +97,20 @@ abstract class AppStrings {
   static const String question = 'Question';
   static const String minutes = 'Minutes';
   static const String start = 'Start';
+
+  //------------------ Exam --------------//
+  static const String noQuestionsAvailable = 'No questions available';
+  static const String back = 'Back';
+  static const String next = 'Next';
+  static const String finish = 'Finish';
+  static const String timeout = 'Timeout !!';
+  static const String viewScore = 'View Score';
+
+  //------------------ Exam Score --------------//
+  static const String examScore = 'Exam Score';
+  static const String yourScore = 'Your score';
+  static const String showResults = 'Show results';
+  static const String startAgain = 'Start again';
+  static const String correct = 'Correct';
+  static const String incorrect = 'Incorrect';
 }

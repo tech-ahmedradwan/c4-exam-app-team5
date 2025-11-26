@@ -105,4 +105,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.whiteColor,
   );
+  static TextStyle kRed24Regular() => GoogleFonts.roboto(
+    fontSize: AppSizes.fs24,
+    fontWeight: FontWeight.w400,
+    color: AppColors.redErrorColor,
+  );
 }
