@@ -105,6 +105,8 @@ abstract class AppStrings {
   static const String finish = 'Finish';
   static const String timeout = 'Timeout !!';
   static const String viewScore = 'View Score';
+  static const String selectAnswerWarning =
+      'Please select an answer before proceeding';
 
   //------------------ Exam Score --------------//
   static const String examScore = 'Exam Score';

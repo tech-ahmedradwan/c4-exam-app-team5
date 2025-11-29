@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../core/constants/app_strings/app_strings.dart';
 import '../../../../../../core/styles/app_colors.dart';
 import '../../../../../../core/utils/app_sizes.dart';
+import '../../../../../../core/widgets/custom_toast_widget.dart';
 import '../../../view_models/exam_questions/exam_questions_cubit.dart';
 import '../../../view_models/exam_questions/exam_questions_events.dart';
 import '../widget/elevated_button_widget.dart';
 
-class NavigationButtonSection extends StatelessWidget {
+class NavigationButtonSection extends StatelessWidget with ShowToasts {
   const NavigationButtonSection({required this.examQuestionsCubit, super.key});
 
   final ExamQuestionsCubit examQuestionsCubit;
@@ -33,12 +34,15 @@ class NavigationButtonSection extends StatelessWidget {
           ),
         ),
         AppSizes.w16.horizontalSpace,
-        // Next Button
+        // Next Button - requires answer selection
         Expanded(
           child: ExamElevatedButtonWidget(
-            onPressed: state.canGoNext
+            onPressed: state.canProceed
+                ? (state.canGoNext
                 ? () => cubit.doIntent(NextQuestionEvent())
-                : () => cubit.doIntent(ExamScoreEvent()),
+                : () => cubit.doIntent(ExamScoreEvent()))
+                : () =>
+                errorToast(context, title: AppStrings.selectAnswerWarning),
             backgroundColor: AppColors.primaryColor,
             text: state.canGoNext ? AppStrings.next : AppStrings.finish,
             textColor: AppColors.backgroundColor,

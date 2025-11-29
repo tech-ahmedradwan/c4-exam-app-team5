@@ -18,6 +18,7 @@ class ExamScoreBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // TODO: Enhance spacing and alignment of Circular Indicator and Labels for this section
         //------------------ Score Indicator and Details Section ------------------//
         Text(AppStrings.yourScore, style: AppTextStyles.kBlack18Medium()),
         24.spaceVertical,

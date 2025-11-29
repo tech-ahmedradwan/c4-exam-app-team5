@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../config/base_state/base_state.dart';
@@ -148,7 +149,7 @@ class ExamQuestionsCubit extends Cubit<ExamQuestionsState> {
     // Create a mutable copy of the userAnswers map
     final updatedAnswers = Map<int, int>.from(state.userAnswers);
     // Save the selected answer for the current question
-    if (state.selectedAnswerIndex != -1) {
+    if (state.selectedAnswerIndex != null) {
       updatedAnswers[state.currentQuestionIndex] = state.selectedAnswerIndex!;
     }
     return updatedAnswers;
@@ -216,10 +217,12 @@ class ExamQuestionsCubit extends Cubit<ExamQuestionsState> {
     final double scorePercentage = (correctCount / totalQuestions) * 100;
 
     // Debug logging
-    log('>>>>>>>>>>>Total Questions: $totalQuestions');
-    log('>>>>>>>>>>>Correct Answers: $correctCount');
-    log('>>>>>>>>>>>Incorrect Answers: $incorrectCount');
-    log('>>>>>>>>>>>Final Score: ${scorePercentage.toStringAsFixed(2)}%');
+    if (kDebugMode) {
+      log('>>>>>>>>>>>Total Questions: $totalQuestions');
+      log('>>>>>>>>>>>Correct Answers: $correctCount');
+      log('>>>>>>>>>>>Incorrect Answers: $incorrectCount');
+      log('>>>>>>>>>>>Final Score: ${scorePercentage.toStringAsFixed(2)}%');
+    }
 
     return ExamResultState(
       totalQuestions: totalQuestions,
@@ -235,17 +238,15 @@ class ExamQuestionsCubit extends Cubit<ExamQuestionsState> {
     final examResult = _calculateScore(userAnswers);
     _stopTimer();
 
-    if (state.submitExam) {
-      emit(
-        state.copyWith(
-          clearSelectedAnswer: true,
-          userAnswers: userAnswers,
-          navigateTo: NavigationAction.scoreScreen,
-          timerState: state.timerState.copyWith(isRunning: false),
-          examResultState: examResult,
-        ),
-      );
-    }
+    emit(
+      state.copyWith(
+        clearSelectedAnswer: true,
+        userAnswers: userAnswers,
+        navigateTo: NavigationAction.scoreScreen,
+        timerState: state.timerState.copyWith(isRunning: false),
+        examResultState: examResult,
+      ),
+    );
   }
 
   //----------- Reset Timeout Dialog method -----------------//

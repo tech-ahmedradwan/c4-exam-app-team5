@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/constants/app_strings/app_strings.dart';
@@ -15,15 +16,17 @@ class ExamScoreView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ExamResultState? result = examResult;
     // Debug logging
-    log('========== ExamScoreView ==========');
-    log('ExamResult received: ${result != null}');
-    if (result != null) {
-      log('Total Questions: ${result.totalQuestions}');
-      log('Correct Answers: ${result.correctAnswers}');
-      log('Incorrect Answers: ${result.incorrectAnswers}');
-      log('Score Percentage: ${result.scorePercentage}%');
+    if (kDebugMode) {
+      log('========== ExamScoreView ==========');
+      log('ExamResult received: ${result != null}');
+      if (result != null) {
+        log('Total Questions: ${result.totalQuestions}');
+        log('Correct Answers: ${result.correctAnswers}');
+        log('Incorrect Answers: ${result.incorrectAnswers}');
+        log('Score Percentage: ${result.scorePercentage}%');
+      }
+      log('===================================');
     }
-    log('===================================');
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.examScore),

@@ -56,15 +56,14 @@ class ExamQuestionsState extends Equatable {
   // Get whether the user can go next
   bool get canGoNext => currentQuestionIndex < totalQuestions - 1;
 
-  // Get whether the user can submit the exam
-  bool get submitExam => selectedAnswerIndex != null && canGoNext;
+  // Get whether user has selected an answer
+  bool get hasSelectedAnswer => selectedAnswerIndex != null;
 
-  // Check if user has selected right answer
-  // bool get isRightAnswer =>
-  //     currentQuestion?.correct ==
-  //         currentQuestion?.answers?[selectedAnswerIndex ?? 0].key
-  //     ? true
-  //     : false;
+  // Get whether the user can proceed (next or finish) - must select answer first
+  bool get canProceed => hasSelectedAnswer;
+
+  // Get whether the user can submit the exam
+  bool get submitExam => selectedAnswerIndex != null;
 
   ExamQuestionsState copyWith({
     BaseState<List<QuestionEntity>>? questionState,
