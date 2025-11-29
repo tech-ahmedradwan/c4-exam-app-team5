@@ -17,7 +17,7 @@ class CustomForgetPasswordInfoSection extends StatelessWidget {
     return Column(
       children: [
         40.verticalSpace,
-        Center(child: Text(title, style: AppTextStyles.kBlack18Mediam())),
+        Center(child: Text(title, style: AppTextStyles.kBlack18Medium())),
         16.verticalSpace,
         Center(
           child: SizedBox(

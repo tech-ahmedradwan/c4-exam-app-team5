@@ -5,7 +5,7 @@ import '../../../data/models/exam_questions_response/exam_questions_response.dar
 import '../../api_client/exam_api_client.dart';
 
 @Injectable(as: ExamRemoteDataSourceContract)
-class ExamRemoteDataSourceImpl extends ExamRemoteDataSourceContract {
+class ExamRemoteDataSourceImpl implements ExamRemoteDataSourceContract {
   ExamRemoteDataSourceImpl(this._examApiClient);
 
   final ExamApiClient _examApiClient;

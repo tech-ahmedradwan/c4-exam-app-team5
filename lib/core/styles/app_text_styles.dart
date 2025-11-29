@@ -16,7 +16,8 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.blackColor,
   );
-  static TextStyle kBlack18Mediam() => GoogleFonts.inter(
+
+  static TextStyle kBlack18Medium() => GoogleFonts.inter(
     fontSize: AppSizes.fs18,
     fontWeight: FontWeight.w500,
     color: AppColors.blackColor,
@@ -109,5 +110,10 @@ class AppTextStyles {
     fontSize: AppSizes.fs16,
     fontWeight: FontWeight.w500,
     color: AppColors.whiteColor,
+  );
+  static TextStyle kRed24Regular() => GoogleFonts.roboto(
+    fontSize: AppSizes.fs24,
+    fontWeight: FontWeight.w400,
+    color: AppColors.redErrorColor,
   );
 }
