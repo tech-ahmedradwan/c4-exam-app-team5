@@ -79,6 +79,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.primaryColor,
   );
+  static TextStyle kLightBlack12SemiBold() => GoogleFonts.roboto(
+    fontSize: AppSizes.fs12,
+    fontWeight: FontWeight.w600,
+    color: const Color(0xff5F5F5F),
+  );
 
   static TextStyle kBlack13Regular() => GoogleFonts.inter(
     fontSize: AppSizes.fs13,

@@ -1,5 +1,6 @@
 class ApiKeys {
   ApiKeys._();
+
   static const String email = 'email';
   static const String password = 'password';
   static const String username = 'username';
@@ -11,4 +12,7 @@ class ApiKeys {
   static const String resetCode = 'resetCode';
   static const String newPassword = 'newPassword';
   static const String subject = 'subject';
+
+  static const String oldPassword = 'oldPassword';
+  static const String confirmPassword = 'confirmPassword';
 }

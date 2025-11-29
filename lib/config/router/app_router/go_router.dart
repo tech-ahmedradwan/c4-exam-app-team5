@@ -12,6 +12,7 @@ import '../../../features/forget_password/presentation/views/reset_password_view
 import '../../../features/forget_password/presentation/views/verify_reset_code_view.dart';
 import '../../../features/home_layout/presentation/views/home_layout_view.dart';
 import '../../../features/login/presentation/views/login_view.dart';
+import '../../../features/profile/presentation/views/change_password_view.dart';
 import '../../../features/signup/presentation/views/sign_up_view.dart';
 import '../../../features/subject_exams/domain/entity/subject_exam_entity.dart';
 import '../../../features/subject_exams/presentation/views/exam_start_view.dart';
@@ -37,7 +38,10 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.homeRoute,
           name: AppRoutes.homeRoute,
-          builder: (context, state) => const HomeLayoutView(),
+
+          builder: (context, state) {
+            return const HomeLayoutView();
+          },
         ),
         GoRoute(
           path: AppRoutes.forgetPasswordRoute,
@@ -94,6 +98,9 @@ class AppRouter {
             final ExamResultState? examResult = state.extra as ExamResultState?;
             return ExamScoreView(examResult: examResult);
           },
+          path: AppRoutes.changePasswordRoute,
+          name: AppRoutes.changePasswordRoute,
+          builder: (context, state) => const ChangePasswordView(),
         ),
       ],
     );

@@ -33,6 +33,7 @@ class AppSizes {
   static final double w48 = 48.0.w;
   static final double w56 = 56.0.w;
   static final double w64 = 64.0.w;
+  static final double w80 = 80.0.w;
 
   /// App Sizes - font sizes
   static final double fs12 = 12.0.sp;
@@ -61,6 +62,7 @@ class AppSizes {
   static final double r48 = 48.0.r;
   static final double r56 = 56.0.r;
   static final double r64 = 64.0.r;
+  static final double r81 = 81.0.r;
   static final double r100 = 100.0.r;
 
   /// App Sizes - padding horizontal

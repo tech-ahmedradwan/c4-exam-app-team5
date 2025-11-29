@@ -7,6 +7,10 @@ import '../utils/app_sizes.dart';
 class AppThemes {
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColors.darkBlueColor,
+      foregroundColor: Colors.white,
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.backgroundColor,
       titleTextStyle: AppTextStyles.kBlack20Mediam(),
@@ -77,6 +81,9 @@ class AppThemes {
         textStyle: AppTextStyles.kWhite16Medium(),
         minimumSize: Size.fromHeight(AppSizes.h48),
       ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(textStyle: AppTextStyles.kBlue12SemiBold()),
     ),
   );
 

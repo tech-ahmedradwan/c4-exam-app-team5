@@ -10,4 +10,5 @@ class AppRoutes {
   static const examStartRoute = '/exam-start';
   static const examQuestionsRoute = '/exam-questions';
   static const examScoreRoute = '/exam-score';
+  static const changePasswordRoute = '/change-password';
 }

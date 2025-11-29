@@ -115,4 +115,19 @@ abstract class AppStrings {
   static const String startAgain = 'Start again';
   static const String correct = 'Correct';
   static const String incorrect = 'Incorrect';
+  static const String update = 'Update';
+  static const String change = 'Change';
+  static const String currentPasswordLabel = 'Current Password';
+  static const String newPasswordLabel = 'New Password';
+  static const String confirmNewPasswordLabel = 'Confirm New Password';
+  static const String passwordChangeSuccessMessage =
+      'Password changed successfully';
+  static const String currentPasswordHint = 'Enter your current password';
+  static const String newPasswordHint = 'Enter your new password';
+  static const String confirmNewPasswordHint = 'Confirm your new password';
+  static const String profileUpdateSuccessMessage =
+      'Profile updated successfully';
+  static const String noProfileChangesMessage = 'No changes made to profile';
+  static const String invalidFormMessage =
+      'Please correct the errors in the form';
 }

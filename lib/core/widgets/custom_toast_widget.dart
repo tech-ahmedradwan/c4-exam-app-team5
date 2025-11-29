@@ -11,4 +11,9 @@ mixin ShowToasts {
       CherryToast.error(
         title: Text(title, style: AppTextStyles.kBlack16Regular()),
       ).show(context);
+
+  void infoToast(context, {required String title, String? description}) =>
+      CherryToast.info(
+        title: Text(title, style: AppTextStyles.kBlack16Regular()),
+      ).show(context);
 }
