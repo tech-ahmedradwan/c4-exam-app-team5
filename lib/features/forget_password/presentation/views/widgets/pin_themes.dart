@@ -8,7 +8,7 @@ mixin PinThemes {
   final PinTheme defaultPinTheme = PinTheme(
     width: 56,
     height: 56,
-    textStyle: AppTextStyles.kBlack18Mediam(),
+    textStyle: AppTextStyles.kBlack18Medium(),
     decoration: BoxDecoration(
       color: AppColors.lightBlueColor,
       borderRadius: BorderRadius.circular(10),
@@ -17,7 +17,7 @@ mixin PinThemes {
   final PinTheme errorPinTheme = PinTheme(
     width: 56,
     height: 56,
-    textStyle: AppTextStyles.kBlack18Mediam(),
+    textStyle: AppTextStyles.kBlack18Medium(),
     decoration: BoxDecoration(
       color: Colors.transparent,
       border: Border.all(color: AppColors.redErrorColor),

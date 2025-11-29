@@ -42,7 +42,7 @@ class ExploreViewBody extends StatelessWidget {
             AppSizes.h40.verticalSpace,
             Text(
               AppStrings.browseBySubject,
-              style: AppTextStyles.kBlack18Mediam(),
+              style: AppTextStyles.kBlack18Medium(),
             ),
             AppSizes.h24.verticalSpace,
             Expanded(

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../core/constants/app_routes/app_routes.dart';
 import '../../../core/constants/app_strings/app_strings.dart';
+import '../../../features/exam/presentation/view_models/exam_questions/exam_result_state.dart';
+import '../../../features/exam/presentation/views/exam_questions_view/exam_questions_view.dart';
+import '../../../features/exam/presentation/views/exam_score_view/exam_score_view.dart';
 import '../../../features/explore/domain/entity/explore_subject_entity.dart';
 import '../../../features/forget_password/presentation/views/forget_password_view.dart';
 import '../../../features/forget_password/presentation/views/reset_password_view.dart';
@@ -73,6 +77,22 @@ class AppRouter {
             final SubjectExamEntity subjectExamEntity =
                 state.extra as SubjectExamEntity;
             return ExamStartView(subjectExamEntity: subjectExamEntity);
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.examQuestionsRoute,
+          name: AppRoutes.examQuestionsRoute,
+          builder: (context, state) {
+            final String examId = state.extra as String;
+            return ExamQuestionsView(examId: examId);
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.examScoreRoute,
+          name: AppRoutes.examScoreRoute,
+          builder: (context, state) {
+            final ExamResultState? examResult = state.extra as ExamResultState?;
+            return ExamScoreView(examResult: examResult);
           },
         ),
       ],

@@ -24,12 +24,10 @@ import '../../features/exam/data/data_sources/remote/exam_remote_data_source_con
     as _i667;
 import '../../features/exam/data/repo/exam_repo_impl.dart' as _i790;
 import '../../features/exam/domain/repo/exam_repo_contract.dart' as _i651;
-import '../../features/exam/domain/use_cases/fetch_exam_answers_use_case.dart'
-    as _i54;
-import '../../features/exam/domain/use_cases/fetch_exam_details_use_case.dart'
-    as _i39;
 import '../../features/exam/domain/use_cases/fetch_exam_questions_use_case.dart'
     as _i267;
+import '../../features/exam/presentation/view_models/exam_questions/exam_questions_cubit.dart'
+    as _i666;
 import '../../features/explore/api/api_client/explore_api_client.dart'
     as _i1020;
 import '../../features/explore/api/data_source/remote/explore_subjects_remote_data_source_impl.dart'
@@ -232,12 +230,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i201.ForgetPasswordCubit>(
       () => _i201.ForgetPasswordCubit(gh<_i982.ForgetPasswordUsecase>()),
     );
-    gh.factory<_i54.FetchExamAnswersUseCase>(
-      () => _i54.FetchExamAnswersUseCase(gh<_i651.ExamRepoContract>()),
-    );
-    gh.factory<_i39.FetchExamDetailsUseCase>(
-      () => _i39.FetchExamDetailsUseCase(gh<_i651.ExamRepoContract>()),
-    );
     gh.factory<_i267.FetchExamQuestionsUseCase>(
       () => _i267.FetchExamQuestionsUseCase(gh<_i651.ExamRepoContract>()),
     );
@@ -258,6 +250,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1051.ExploreSubjectsCubit>(
       () =>
           _i1051.ExploreSubjectsCubit(gh<_i462.FetchExploreSubjectsUseCase>()),
+    );
+    gh.factory<_i666.ExamQuestionsCubit>(
+      () => _i666.ExamQuestionsCubit(gh<_i267.FetchExamQuestionsUseCase>()),
     );
     gh.factory<_i1005.LoginUseCase>(
       () => _i1005.LoginUseCase(loginRepo: gh<_i909.LoginRepoContract>()),
