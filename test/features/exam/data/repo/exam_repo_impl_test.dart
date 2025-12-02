@@ -356,10 +356,6 @@ void main() {
 
           when(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).thenThrow(dioException);
-
-          when(
-            mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
           ).thenAnswer((_) => throw dioException);
 
           // ACT
