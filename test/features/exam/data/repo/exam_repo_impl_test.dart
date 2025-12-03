@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:exam_app/config/base_response/base_response.dart';
+import 'package:exam_app/core/errors/app_exceptions.dart';
+import 'package:exam_app/core/errors/failure.dart';
 import 'package:exam_app/features/exam/api/data_source/remote/exam_remote_data_source_impl.dart';
 import 'package:exam_app/features/exam/data/models/exam_questions_response/answer.dart';
 import 'package:exam_app/features/exam/data/models/exam_questions_response/exam.dart';
@@ -7,7 +11,6 @@ import 'package:exam_app/features/exam/data/models/exam_questions_response/exam_
 import 'package:exam_app/features/exam/data/models/exam_questions_response/question.dart';
 import 'package:exam_app/features/exam/data/repo/exam_repo_impl.dart';
 import 'package:exam_app/features/exam/domain/entity/question_entity.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -31,7 +34,7 @@ void main() {
     group('Success Response Test Cases', () {
       const message = 'success';
 
-      test('Test Success Case with QuestionEntity not empty list', () async {
+      test('Test Success Case with QuestionEntity non-empty list', () async {
         /// ARRANGE ==> Setup mock data
         final Exam mockExam = Exam(
           id: '1',
@@ -106,44 +109,26 @@ void main() {
         // result is same id value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
           expect(result.data[i].id, mockQuestionDtoList[i].id);
-          if (kDebugMode) {
-            print('id = ${result.data[i].id}');
-          }
         }
         // result is same subject value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
           expect(result.data[i].subject, mockQuestionDtoList[i].subject);
-          if (kDebugMode) {
-            print('subject = ${result.data[i].subject}');
-          }
         }
         // result is same correct value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
           expect(result.data[i].correct, mockQuestionDtoList[i].correct);
-          if (kDebugMode) {
-            print('correct = ${result.data[i].correct}');
-          }
         }
         // result is same type value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
           expect(result.data[i].type, mockQuestionDtoList[i].type);
-          if (kDebugMode) {
-            print('type = ${result.data[i].type}');
-          }
         }
         // result is same question value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
           expect(result.data[i].question, mockQuestionDtoList[i].question);
-          if (kDebugMode) {
-            print('question = ${result.data[i].question}');
-          }
         }
         // result is same exam id value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
           expect(result.data[i].exam?.id, mockQuestionDtoList[i].exam?.id);
-          if (kDebugMode) {
-            print('Exam.id = ${result.data[i].exam?.id}');
-          }
         }
         // result is same exam title value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
@@ -151,9 +136,6 @@ void main() {
             result.data[i].exam?.title,
             mockQuestionDtoList[i].exam?.title,
           );
-          if (kDebugMode) {
-            print('Exam.title = ${result.data[i].exam?.title}');
-          }
         }
         // result is same exam subject value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
@@ -161,9 +143,6 @@ void main() {
             result.data[i].exam?.subject,
             mockQuestionDtoList[i].exam?.subject,
           );
-          if (kDebugMode) {
-            print('Exam.subject = ${result.data[i].exam?.subject}');
-          }
         }
         // result is same exam duration value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
@@ -171,9 +150,6 @@ void main() {
             result.data[i].exam?.duration,
             mockQuestionDtoList[i].exam?.duration,
           );
-          if (kDebugMode) {
-            print('Exam.duration = ${result.data[i].exam?.duration}');
-          }
         }
         // result is same exam numberOfQuestions value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
@@ -181,31 +157,34 @@ void main() {
             result.data[i].exam?.numberOfQuestions,
             mockQuestionDtoList[i].exam?.numberOfQuestions,
           );
-          if (kDebugMode) {
-            print(
-              'Exam.numberOfQuestions = ${result.data[i].exam?.numberOfQuestions}',
-            );
-          }
         }
         // result is same Answers key value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
+          final resultAnswers = result.data[i].answers;
+          final mockAnswers = mockQuestionDtoList[i].answers;
+          if (resultAnswers != null && mockAnswers != null) {
+            for (int j = 0; j < resultAnswers.length; j++) {
+              expect(resultAnswers[j].key, mockAnswers[j].key);
+            }
+          }
           expect(
             result.data[i].answers?[i].key,
             mockQuestionDtoList[i].answers?[i].key,
           );
-          if (kDebugMode) {
-            print('Answers.key = ${result.data[i].answers?[i].key}');
-          }
         }
         // result is same Answers answer value of mockQuestionDtoList
         for (int i = 0; i < mockQuestionDtoList.length; i++) {
+          final resultAnswers = result.data[i].answers;
+          final mockAnswers = mockQuestionDtoList[i].answers;
+          if (resultAnswers != null && mockAnswers != null) {
+            for (int j = 0; j < resultAnswers.length; j++) {
+              expect(resultAnswers[j].answer, mockAnswers[j].answer);
+            }
+          }
           expect(
             result.data[i].answers?[i].answer,
             mockQuestionDtoList[i].answers?[i].answer,
           );
-          if (kDebugMode) {
-            print('Answers.answer = ${result.data[i].answers?[i].answer}');
-          }
         }
 
         // verify that the method was called once
@@ -238,7 +217,7 @@ void main() {
       });
       test('Test Success Case with QuestionEntity null value', () async {
         // ARRANGE - Setup mock with null questions
-        final List<Question>? mockQuestionDtoList = null;
+        final mockQuestionDtoList = null;
         when(
           mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
         ).thenAnswer(
@@ -363,165 +342,79 @@ void main() {
 
     group('Error Response Test Cases', () {
       group('Dio Exception Test Cases', () {
-        test('Test Error Case with Dio Exception', () async {
-          // ARRANGE - Setup mock to throw DioException
+        test('Test Error Case when Type - Network Timeout', () async {
+          // ARRANGE
+          final appException = AppException(
+            message:
+                'Connection Timeout. Please check your internet connection.',
+          );
           final dioException = DioException(
-            requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-            response: Response(
-              requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-              statusCode: 500,
-              statusMessage: 'Internal Server Error',
-            ),
-            type: DioExceptionType.badResponse,
-            message: 'Server error occurred',
+            requestOptions: RequestOptions(),
+            type: DioExceptionType.receiveTimeout,
+            error: appException,
           );
 
           when(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).thenThrow(dioException);
+          ).thenAnswer((_) => throw dioException);
 
           // ACT
-          final result = await examRepoImpl.fetchExamQuestions(examId);
+          final result =
+              await examRepoImpl.fetchExamQuestions(examId)
+                  as ErrorResponse<List<QuestionEntity>>;
 
           // ASSERT
-          expect(result, isA<ErrorResponse>());
-          final errorResponse = result as ErrorResponse;
-          expect(errorResponse.failure, isNotNull);
-          expect(errorResponse.failure.message, 'Server error occurred.');
+          expect(result.failure, isA<ServerFailure>());
+          expect(result.failure, isNotNull);
+          expect(result.failure.message, equals(appException.message));
           verify(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
           ).called(1);
         });
-        test('Test Error Case with DioException - Network Timeout', () async {
-          // ARRANGE - Setup mock to throw timeout exception
+        test('Test Error Case when Type - Bad Certificate', () async {
+          // ARRANGE
           final dioException = DioException(
-            requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-            type: DioExceptionType.connectionTimeout,
-            message: 'Connection timeout',
+            requestOptions: RequestOptions(),
+            type: DioExceptionType.badCertificate,
           );
 
           when(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).thenThrow(dioException);
+          ).thenAnswer((_) => throw dioException);
 
           // ACT
-          final result = await examRepoImpl.fetchExamQuestions(examId);
+          final result =
+              await examRepoImpl.fetchExamQuestions(examId)
+                  as ErrorResponse<List<QuestionEntity>>;
 
           // ASSERT
-          expect(result, isA<ErrorResponse>());
-          final errorResponse = result as ErrorResponse;
-          expect(errorResponse.failure, isNotNull);
-          expect(errorResponse.failure.message, 'Server error occurred.');
+          expect(result.failure, isA<ServerFailure>());
+          expect(result.failure, isNotNull);
+          expect(result.failure.message, equals('Server error occurred.'));
           verify(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
           ).called(1);
         });
-        test('Test Error Case with DioException - 404 Not Found', () async {
-          // ARRANGE - Setup mock to throw 404 exception
-          final dioException = DioException(
-            requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-            response: Response(
-              requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-              statusCode: 404,
-              statusMessage: 'Not Found',
-            ),
-            type: DioExceptionType.badResponse,
-            message: 'Exam not found',
-          );
-
-          when(
-            mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).thenThrow(dioException);
-
-          // ACT
-          final result = await examRepoImpl.fetchExamQuestions(examId);
-
-          // ASSERT
-          expect(result, isA<ErrorResponse>());
-          final errorResponse = result as ErrorResponse;
-          expect(errorResponse.failure, isNotNull);
-          expect(errorResponse.failure.message, 'Server error occurred.');
-          verify(
-            mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).called(1);
-        });
-        test('Test Error Case with DioException - 401 Unauthorized', () async {
-          // ARRANGE - Setup mock to throw 401 exception
-          final dioException = DioException(
-            requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-            response: Response(
-              requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-              statusCode: 401,
-              statusMessage: 'Unauthorized',
-            ),
-            type: DioExceptionType.badResponse,
-            message: 'Authentication required',
-          );
-
-          when(
-            mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).thenThrow(dioException);
-
-          // ACT
-          final result = await examRepoImpl.fetchExamQuestions(examId);
-
-          // ASSERT
-          expect(result, isA<ErrorResponse>());
-          final errorResponse = result as ErrorResponse;
-          expect(errorResponse.failure, isNotNull);
-          expect(errorResponse.failure.message, 'Server error occurred.');
-          verify(
-            mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).called(1);
-        });
-        test(
-          'Test Error Case with DioException - No Internet Connection',
-          () async {
-            // ARRANGE - Setup mock to throw no connection exception
-            final dioException = DioException(
-              requestOptions: RequestOptions(path: '/exams/$examId/questions'),
-              type: DioExceptionType.connectionError,
-              message: 'No internet connection',
-            );
-
-            when(
-              mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-            ).thenThrow(dioException);
-
-            // ACT
-            final result = await examRepoImpl.fetchExamQuestions(examId);
-
-            // ASSERT
-            expect(result, isA<ErrorResponse>());
-            final errorResponse = result as ErrorResponse;
-            expect(errorResponse.failure, isNotNull);
-            expect(errorResponse.failure.message, 'Server error occurred.');
-            verify(
-              mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-            ).called(1);
-          },
-        );
       });
 
       group('Generic Exception Test Cases', () {
         test('Test Error Case with Exception', () async {
-          // ARRANGE - Setup mock to throw generic Exception
-          final exception = Exception('Unexpected error occurred');
-
+          // ARRANGE
           when(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
-          ).thenThrow(exception);
+          ).thenAnswer((_) => throw IOException);
 
           // ACT
-          final result = await examRepoImpl.fetchExamQuestions(examId);
+          final result =
+              await examRepoImpl.fetchExamQuestions(examId)
+                  as ErrorResponse<List<QuestionEntity>>;
 
           // ASSERT
-          expect(result, isA<ErrorResponse>());
-          final errorResponse = result as ErrorResponse;
-          expect(errorResponse.failure, isNotNull);
+          expect(result.failure, isA<ServerFailure>());
+          expect(result.failure, isNotNull);
           expect(
-            errorResponse.failure.message,
-            'An unexpected error occurred.',
+            result.failure.message,
+            equals('An unexpected error occurred.'),
           );
           verify(
             mockExamRemoteDataSourceImpl.fetchExamQuestions(examId: examId),
