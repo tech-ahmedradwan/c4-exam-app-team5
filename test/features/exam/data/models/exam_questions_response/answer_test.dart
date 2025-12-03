@@ -16,6 +16,7 @@ void main() {
       expect(result, isA<AnswerEntity>());
       expect(result.answer, isA<String?>());
       expect(result.key, isA<String?>());
+
       final expectedAnswerEntity = AnswerEntity(answer: 'Option A', key: 'A');
       expect(result.answer, equals(expectedAnswerEntity.answer));
       expect(result.key, equals(expectedAnswerEntity.key));
@@ -35,12 +36,7 @@ void main() {
       expect(result.answer, isA<String?>());
       expect(result.key, isA<String?>());
 
-      expect(result.answer, isEmpty);
-      expect(result.answer, isNotNull);
       expect(result.answer, equals(''));
-
-      expect(result.key, isEmpty);
-      expect(result.key, isNotNull);
       expect(result.key, equals(''));
     },
   );

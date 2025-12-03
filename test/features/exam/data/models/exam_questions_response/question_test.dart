@@ -47,6 +47,7 @@ void main() {
       expect(result.correct, isA<String?>());
       expect(result.subject, isA<dynamic>());
       expect(result.exam, isA<ExamEntity?>());
+
       final expectedQuestionEntity = QuestionEntity(
         id: '1',
         question: 'Test Question 1',
@@ -65,15 +66,17 @@ void main() {
         result.answers?.length,
         equals(expectedQuestionEntity.answers?.length),
       );
-      for (int i = 0; i < result.answers!.length; i++) {
-        expect(
-          result.answers![i].answer,
-          equals(expectedQuestionEntity.answers![i].answer),
-        );
-        expect(
-          result.answers![i].key,
-          equals(expectedQuestionEntity.answers![i].key),
-        );
+      if (result.answers != null && result.answers!.isNotEmpty) {
+        for (int i = 0; i < result.answers!.length; i++) {
+          expect(
+            result.answers![i].answer,
+            equals(expectedQuestionEntity.answers![i].answer),
+          );
+          expect(
+            result.answers![i].key,
+            equals(expectedQuestionEntity.answers![i].key),
+          );
+        }
       }
       expect(result.exam?.id, equals(expectedQuestionEntity.exam?.id));
       expect(result.exam?.title, equals(expectedQuestionEntity.exam?.title));

@@ -69,24 +69,10 @@ void main() {
       expect(result.numberOfQuestions, isA<int?>());
 
       expect(result.id, isEmpty);
-      expect(result.id, isNotNull);
-      expect(result.id, equals(''));
-
       expect(result.title, isEmpty);
-      expect(result.title, isNotNull);
-      expect(result.title, equals(''));
-
       expect(result.subject, isEmpty);
-      expect(result.subject, isNotNull);
-      expect(result.subject, equals(''));
-
-      expect(result.duration, isNotNull);
       expect(result.duration, isZero);
-      expect(result.duration, equals(0));
-
-      expect(result.numberOfQuestions, isNotNull);
       expect(result.numberOfQuestions, isZero);
-      expect(result.numberOfQuestions, equals(0));
     },
   );
 }
